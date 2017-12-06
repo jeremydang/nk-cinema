@@ -4,6 +4,12 @@ const nowShowingPostersImgPath = [
   'assets/images/blade_runner_poster.jpg'
 ];
 
+const movieTitles = [
+  ['Star Wars: The', 'Last Jedi'],
+  ['Wonder Woman'],
+  ['Blade Runner', '2049']
+];
+
 const imgMultiplyCoeff = [1, 0, -1];
 
 const browserMoviesPage = new Vue({
@@ -25,6 +31,14 @@ const browserMoviesPage = new Vue({
   computed: {
     currentBackgroundPoster: function() {
       return nowShowingPostersImgPath[this.currentImgIndex];
+    },
+    currentMovieTitleLine1: function() {
+      const movieTitle = movieTitles[this.currentImgIndex];
+      return movieTitle[0];
+    },
+    currentMovieTitleLine2: function() {
+      const movieTitle = movieTitles[this.currentImgIndex];
+      return movieTitle[1];
     }
   },
   watch: {

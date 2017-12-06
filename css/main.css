@@ -189,3 +189,14 @@ body {
   opacity: 0.7;
 }
 
+#browserMoviesPage .movieTitle {
+  position: absolute;
+  bottom: 24em;
+  right: 15em;
+}
+
+#browserMoviesPage .movieTitle h2 {
+  font-size: 4.5em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
