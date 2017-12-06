@@ -4,10 +4,11 @@ const nowShowingPostersImgPath = [
   'assets/images/blade_runner_poster.jpg'
 ];
 
+const imgMultiplyCoeff = [1, 0, -1];
+
 const browserMoviesPage = new Vue({
   el: '#browserMoviesPage',
   data: {
-    imgMultiplyCoeff: [1, 0, -1],
     currentImgIndex: 1,
     nowShowingPosters: nowShowingPostersImgPath.map(
       poster => `url('${poster}')`
@@ -16,14 +17,9 @@ const browserMoviesPage = new Vue({
   methods: {
     onScrollPage: function() {
       this.currentImgIndex =
-        this.currentImgIndex === this.imgMultiplyCoeff.length - 1
+        this.currentImgIndex === imgMultiplyCoeff.length - 1
           ? 0
           : this.currentImgIndex + 1;
-      const { nowShowingMovieSlider } = this.$refs;
-      TweenMax.to(nowShowingMovieSlider, 0.7, {
-        y: 500 * this.imgMultiplyCoeff[this.currentImgIndex],
-        ease: Back.easeOut.config(1)
-      });
     }
   },
   computed: {
@@ -35,6 +31,13 @@ const browserMoviesPage = new Vue({
     currentBackgroundPoster: function() {
       const { backgroundPosterImg } = this.$refs;
       TweenMax.from(backgroundPosterImg, 0.7, { opacity: 0 });
+    },
+    currentImgIndex: function() {
+      const { nowShowingMovieSlider } = this.$refs;
+      TweenMax.to(nowShowingMovieSlider, 0.7, {
+        y: 800 * imgMultiplyCoeff[this.currentImgIndex],
+        ease: Back.easeOut.config(1)
+      });
     }
   }
 });
