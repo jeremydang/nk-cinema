@@ -154,31 +154,31 @@ body {
 
 #browserMoviesPage .nowShowingMovieSlider {
   width: 500px;
-  height: 1500px;
+  height: 2325px;
   left: 25em;
   position: absolute;
-  top: -15em;
+  top: -25em;
 }
 
 #browserMoviesPage .poster1 {
-  height: 300px;
-  width: 500px;
-  margin-bottom: 200px;
+  height: 475px;
+  width: 785px;
+  margin-bottom: 300px;
 }
 
 #browserMoviesPage .poster2 {
-  height: 300px;
-  width: 500px;
-  margin-bottom: 200px;
+  height: 475px;
+  width: 785px;
+  margin-bottom: 300px;
 }
 
 #browserMoviesPage .poster3 {
-  height: 300px;
-  width: 500px;
-  margin-bottom: 200px;
+  height: 475px;
+  width: 785px;
+  margin-bottom: 300px;
 }
 
-.backgroundPosterImg {
+#browserMoviesPage .backgroundPosterImg {
   position: absolute;
   top: 50%;
   left: 50%;
