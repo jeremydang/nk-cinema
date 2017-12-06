@@ -1,0 +1,191 @@
+/* ---------------------------------------------------------------------------------------------------- */
+/* GLOBAL */
+
+@font-face {
+  font-family: 'League Spartan Bold';
+  src: url('assets/fonts/LeagueSpartan-Bold.otf') format('otf');
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  background-color: #531EC6;
+  border: none;
+  padding: 0.5em 1.2em;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0 auto -webkit-focus-ring-color;
+  outline: none;
+}
+
+.fullDivImg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* UTILITIES */
+
+.fontWhite {
+  color: white;
+}
+
+.fontLightGray {
+  color: #a3a3a3;
+}
+
+.fontSpartan {
+  font-family: "League Spartan Bold", sans-serif;
+}
+
+.fontMontserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.absolutePos {
+  position: absolute;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* HOME PAGE */
+
+#homePage {
+  background: linear-gradient(180deg, rgba(83, 30, 198, 0.4) 0%, rgba(38, 0, 99, 0.7) 75%, rgba(0, 0, 0, 0.8) 100%),
+  url('../assets/images/blade_runner_poster.jpg') no-repeat center;
+
+  background-size: cover;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+#homePage .header {
+  flex: 1;
+  display: flex;
+}
+
+#homePage .header :first-child {
+  margin: 1.5em;
+}
+
+#homePage .header :last-child {
+  margin: 1.5em 1.5em 0 auto;
+  text-decoration: underline;
+  text-underline-position: under;
+  height: auto;
+}
+
+#homePage .movieTitle {
+  flex: 3;
+  margin-left: 2.5em;
+}
+
+#homePage .movieTitle :first-child {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+#homePage .movieTitle h2 {
+  font-size: 2.2em;
+  color: #D6D6D6;
+  margin: 0;
+}
+
+#homePage .cinemaIntro {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#homePage .cinemaIntro :first-child {
+  font-size: 3em;
+  margin: 0;
+}
+
+#homePage .cinemaIntro .introSubheader {
+  font-size: 1.7em;
+  margin: 0.5em;
+  font-weight: 400;
+}
+
+#homePage .btnBookTicket {
+  font-size: 1.5em;
+  margin-top: 1em;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* BROWSER MOVIES PAGE */
+
+#browserMoviesPage {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(41, 41, 41, 0) 50%),
+  linear-gradient(0, rgba(0, 0, 0, 1) 0%, rgba(41, 41, 41, 0) 50%);
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+#browserMoviesPage .header {
+  display: flex;
+}
+
+#browserMoviesPage .header :first-child {
+  margin: 1.5em;
+}
+
+#browserMoviesPage .header :last-child {
+  margin: 1.5em 1.5em 0 auto;
+  text-decoration: underline;
+  text-underline-position: under;
+  height: auto;
+}
+
+#browserMoviesPage .nowShowingMovieSlider {
+  width: 500px;
+  height: 1500px;
+  left: 25em;
+  position: absolute;
+  top: -15em;
+}
+
+#browserMoviesPage .poster1 {
+  height: 300px;
+  width: 500px;
+  margin-bottom: 200px;
+}
+
+#browserMoviesPage .poster2 {
+  height: 300px;
+  width: 500px;
+  margin-bottom: 200px;
+}
+
+#browserMoviesPage .poster3 {
+  height: 300px;
+  width: 500px;
+  margin-bottom: 200px;
+}
+
+.backgroundPosterImg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.7;
+}
+
