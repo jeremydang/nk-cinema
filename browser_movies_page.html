@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,500,600,700" rel="stylesheet">
   <style>
     body {
       background-color: black;
@@ -22,19 +22,36 @@
     <h2 class="fontWhite fontSpartan">Menu</h2>
   </div>
   <div class="nowShowingMovieSlider" ref="nowShowingMovieSlider">
-    <div class="poster1 fullDivImg" :style="{ backgroundImage: nowShowingPosters[0] }">
+    <div class="poster1 fullDivImg" :style="{ backgroundImage: currentMovies[0].posterUrlPath }">
     </div>
-    <div class="poster2 fullDivImg" :style="{ backgroundImage: nowShowingPosters[1] }">
+    <div class="poster2 fullDivImg" :style="{ backgroundImage: currentMovies[1].posterUrlPath }">
     </div>
-    <div class="poster3 fullDivImg" :style="{ backgroundImage: nowShowingPosters[2] }">
+    <div class="poster3 fullDivImg" :style="{ backgroundImage: currentMovies[2].posterUrlPath }">
     </div>
   </div>
   <div class="movieTitle">
-    <h2 class="fontWhite">{{ currentMovieTitleLine1 }}</h2>
-    <h2 class="fontWhite">{{ currentMovieTitleLine2 }}</h2>
+    <h2 class="fontWhite fontSpartan">{{ currentMovieTitleLine1 }}</h2>
+    <h2 class="fontWhite fontSpartan">{{ currentMovieTitleLine2 }}</h2>
   </div>
   <div class="movieDetail"></div>
   <div class="movieTime"></div>
+  <div class="verticalBarChooseTypeOfMovies">
+    <div class="fontWhite fontMontserrat nowShowing" @click="onClickNowShowing" ref="nowShowing">Now showing</div>
+    <div class="fontWhite fontMontserrat comingSoon" @click="onClickComingSoon" ref="comingSoon">Coming soon</div>
+  </div>
+  <div class="movieReleaseDate">
+    <h3 class="fontLightGray fontMontserrat">Premiere</h3>
+    <h2 class="fontWhite fontMontserrat">{{ currentMovieReleaseDate }}</h2>
+  </div>
+  <div class="movieInfo">
+    <div class="fontLightGray fontMontserrat">
+      <button>IMDb</button>
+      <span class="fontWhite">{{ currentMovieImdbScore }}/</span>10
+    </div>
+    <div class="fontWhite fontMontserrat">
+      {{ currentMovieCategory }} | {{ currentMovieRunningTime }}
+    </div>
+  </div>
 </div>
 <script src="libs/vue.min.js"></script>
 <script src="libs/TweenMax.min.js"></script>

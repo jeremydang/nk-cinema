@@ -155,26 +155,26 @@ body {
 #browserMoviesPage .nowShowingMovieSlider {
   width: 500px;
   height: 2325px;
-  left: 25em;
+  left: 15em;
   position: absolute;
-  top: -25em;
+  top: -35em;
 }
 
 #browserMoviesPage .poster1 {
   height: 475px;
-  width: 785px;
+  width: 700px;
   margin-bottom: 300px;
 }
 
 #browserMoviesPage .poster2 {
   height: 475px;
-  width: 785px;
+  width: 700px;
   margin-bottom: 300px;
 }
 
 #browserMoviesPage .poster3 {
   height: 475px;
-  width: 785px;
+  width: 700px;
   margin-bottom: 300px;
 }
 
@@ -191,8 +191,8 @@ body {
 
 #browserMoviesPage .movieTitle {
   position: absolute;
-  bottom: 24em;
-  right: 15em;
+  top: 65%;
+  left: 55%;
 }
 
 #browserMoviesPage .movieTitle h2 {
@@ -200,3 +200,82 @@ body {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+#browserMoviesPage .verticalBarChooseTypeOfMovies {
+  display: flex;
+  flex-direction: row;
+  transform: rotate(-90deg);
+  position: absolute;
+  bottom: 30%;
+  left: -8em;
+}
+
+#browserMoviesPage .verticalBarChooseTypeOfMovies div {
+  margin-left: 1em;
+  margin-right: 2em;
+  font-size: 1.5em;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#browserMoviesPage .verticalBarChooseTypeOfMovies .nowShowing {
+  opacity: 1;
+}
+
+#browserMoviesPage .verticalBarChooseTypeOfMovies .comingSoon {
+  opacity: 0.2;
+}
+
+#browserMoviesPage .movieReleaseDate {
+  position: absolute;
+  left: 30%;
+  top: 15%;
+}
+
+#browserMoviesPage .movieReleaseDate h3 {
+  font-size: 1.3em;
+  margin: 0.1em 0 0.1em 0;
+  font-weight: 200;
+}
+
+#browserMoviesPage .movieReleaseDate h2 {
+  font-size: 1.5em;
+  margin: 0.1em 0 0.1em 0;
+  font-weight: 200;
+}
+
+#browserMoviesPage .movieInfo {
+  position: absolute;
+  top: 40%;
+  bottom: 50%;
+  left: 70%;
+}
+
+#browserMoviesPage .movieInfo div {
+  font-weight: 200;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+#browserMoviesPage .movieInfo :first-child {
+  font-size: 1.4em;
+}
+
+#browserMoviesPage .movieInfo :last-child {
+  font-size: 1.5em;
+}
+
+#browserMoviesPage .movieInfo button {
+  font-size: 1.2em;
+  font-weight: 600;
+  width: 5em;
+  height: 31px;
+  padding-left: 1.4em;
+  padding-right: 1.4em;
+  text-align: center;
+  border-radius: 0.5em;
+  background-color: #FFB903;
+  border: none;
+}
+
