@@ -11,21 +11,33 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 .btn {
   background-color: #531EC6;
   border: none;
-  padding: 0.5em 1.6em;
+  padding: 0.7em 1.8em;
   border-radius: 30px;
   cursor: pointer;
+  position: relative;
   font-weight: 600;
   font-size: 1.2em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  will-change: transform;
+  transition: box-shadow .4s ease-out, background-color .4s ease-out; 
 }
 
 .btn:focus {
   outline: 0 auto -webkit-focus-ring-color;
   outline: none;
+}
+
+.btn:hover{
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+  background-color: #3F0CAD;
 }
 
 .fullDivImg {
@@ -59,6 +71,16 @@ body {
 
 /* ---------------------------------------------------------------------------------------------------- */
 /* HOME PAGE */
+
+#preloader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #090012;
+  z-index: 100;
+}
 
 #homePage {
   background: linear-gradient(180deg, 
@@ -107,6 +129,17 @@ body {
   margin: 0;
 }
 
+#homePage .movieTitle .blindText{
+  overflow: hidden;
+}
+
+#homePage .movieTitle .blindText span{
+  opacity: 0;
+  position: relative;
+  top: -100px;
+  animation-fill-mode: forwards;
+}
+
 #homePage .cinemaIntro {
   flex: 3;
   display: flex;
@@ -115,7 +148,7 @@ body {
   align-items: center;
 }
 
-#homePage .cinemaIntro :first-child {
+#homePage .cinemaIntro h2:first-child {
   font-size: 3em;
   margin: 0;
 }
@@ -124,12 +157,52 @@ body {
   font-size: 1.5em;
   margin: 0.5em;
   font-weight: 400;
-  letter-spacing: 3px;
+}
+
+#homePage .cinemaIntro h2{
+  overflow: hidden;
+}
+
+#homePage .cinemaIntro h2 > span > span {
+  display: inline-block;
+  perspective: 900px;
+  transform-origin: 50% 50%;
+}
+
+#homePage .cinemaIntro h2 > span > span > span {
+  display: inline-block;
+  color: hsla(0,0%,0%,0);
+  transform-style: preserve-3d;
+  transform: translate3d(0,0,0);
+  animation: filmOpening 1.3s linear forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes filmOpening {
+  0% {
+    letter-spacing: 10px;
+    opacity: 0.2;
+    transform: rotateY(-90deg);
+  }
+  80% {
+    letter-spacing: 3px;
+    opacity: 1;
+    transform: rotateY(0deg);
+    text-shadow: 0 0 0 #fff;
+  }
+  100% {
+    letter-spacing: 2px;
+    opacity: 1;
+    transform: rotateY(0deg);
+    text-shadow: 0 0 0 #fff;
+  }
 }
 
 #homePage .btnBookTicket {
   margin-top: 1em;
+  position: relative;
 }
+
 
 /* ---------------------------------------------------------------------------------------------------- */
 /* BROWSER MOVIES PAGE */

@@ -10,23 +10,32 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
 </head>
 <body>
+<div id="preloader"></div>
 <div id="homePage">
   <div class="header">
     <h2 class="fontWhite fontSpartan">NK.</h2>
     <h2 class="fontWhite fontSpartan">Menu</h2>
   </div>
   <div class="movieTitle">
-    <h3 class="fontMontserrat fontLightGray">Now showing</h3>
-    <h2 class="fontSpartan">Blade Runner</h2>
-    <h2 class="fontSpartan">2049</h2>
+    <h3 class="fontMontserrat fontLightGray blindText"><span>Now showing</span></h3>
+    <h2 class="fontSpartan blindText"><span>Blade Runner</span></h2>
+    <h2 class="fontSpartan blindText"><span>2049</span></h2>
   </div>
   <div class="cinemaIntro">
     <h2 class="fontWhite fontSpartan">Enjoy your cinema experience</h2>
-    <h3 class="fontMontserrat fontLightGray introSubheader">Anywhere, anytime</h3>
-    <button class="btn btnBookTicket fontMontserrat fontWhite" @click="onClickBookTicket">Book your tickets</button>
+    <h2 class="fontMontserrat fontLightGray introSubheader">Anywhere, anytime</h2>
+    <button class="btn btnBookTicket fontMontserrat fontWhite"
+     @click="onClickBookTicket" @mousemove="onMouseMove"  @mouseleave="onMouseLeave" 
+     @mousedown="onMouseDown" @mouseup="onMouseUp" ref="btnBookTicket">
+      <span ref="btnText">Book your tickets</span>
+     </button>
   </div>
 </div>
 <script src="libs/vue.min.js"></script>
+<script src="libs/TweenMax.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="libs/jquery.lettering.js"></script>
 <script src="js/main_page.js"></script>
+
 </body>
 </html>
