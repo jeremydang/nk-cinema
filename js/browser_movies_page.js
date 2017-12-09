@@ -93,7 +93,7 @@ const browserMoviesPage = new Vue({
   },
   computed: {
     currentBackgroundPoster: function() {
-      return this.currentMovies[this.currentImgIndex].posterImgPath;
+      return this.currentMovies[this.currentImgIndex].posterUrlPath;
     },
     currentMovieTitleLine1: function() {
       const movieTitle = this.currentMovies[this.currentImgIndex].title;
@@ -112,7 +112,7 @@ const browserMoviesPage = new Vue({
     currentMovieImdbScore: function() {
       return this.currentMovies[this.currentImgIndex].imdbScore;
     },
-    currentMovieRunningTime: function () {
+    currentMovieRunningTime: function() {
       return this.currentMovies[this.currentImgIndex].runningTime;
     }
   },
