@@ -96,18 +96,18 @@ body {
   flex-direction: column;
 }
 
-#homePage .header {
+.header {
   flex: 1;
   display: flex;
   align-items: baseline;
 }
 
-#homePage .header :first-child {
+.header :first-child {
   margin: 1em 1.2em;
   font-size: 1.8em;
 }
 
-#homePage .header :last-child {
+.header :last-child {
   margin: 1em 1.2em 1em auto;
   border-bottom: 2px solid #a3a3a3;
 }
@@ -213,57 +213,30 @@ body {
   display: flex;
   height: 100%;
   flex-direction: column;
-  overflow: hidden;
+   overflow: hidden; 
   position: relative;
-}
-
-#browserMoviesPage .header {
-  display: flex;
-}
-
-#browserMoviesPage .header :first-child {
-  margin: 1.5em;
-}
-
-#browserMoviesPage .header :last-child {
-  margin: 1.5em 1.5em 0 auto;
-  text-decoration: underline;
-  text-underline-position: under;
-  height: auto;
 }
 
 #browserMoviesPage .nowShowingMovieSlider {
   width: 500px;
-  height: 2325px;
-  left: 15em;
-  position: absolute;
-  top: -35em;
+  height: 2025px;
+  margin-left: 15em;
+  /* position: absolute; */
+   margin-top: 27vh; 
 }
 
-#browserMoviesPage .poster1 {
-  height: 475px;
-  width: 700px;
-  margin-bottom: 300px;
-}
-
-#browserMoviesPage .poster2 {
-  height: 475px;
-  width: 700px;
-  margin-bottom: 300px;
-}
-
-#browserMoviesPage .poster3 {
-  height: 475px;
-  width: 700px;
-  margin-bottom: 300px;
+#browserMoviesPage .poster1, #browserMoviesPage .poster2, #browserMoviesPage .poster3 {
+  height: 500px;
+  width: 800px;
+  margin-bottom: 150px;
 }
 
 #browserMoviesPage .backgroundPosterImg {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
   transform: translate(-50%, -50%);
   z-index: -1;
   opacity: 0.7;

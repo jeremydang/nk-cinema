@@ -49,7 +49,7 @@ let comingSoonMovies = [
   },
   {
     posterImgPath: 'assets/images/assassin_creed_poster.jpg',
-    title: ["Assassin's Creed"],
+    title: ["Assassin's", "Creed"],
     releaseDate: '21 December 2016',
     imdbScore: 5.8,
     category: 'Action, Adventure, Fantasy',
@@ -62,13 +62,20 @@ comingSoonMovies = comingSoonMovies.map(movie => ({
   posterUrlPath: `url('${movie.posterImgPath}')`
 }));
 
-const imgMultiplyCoeff = [1, 0, -1];
+const imgMultiplyCoeff = [0, -1, -2];
+
+const browserWidth = document.documentElement.clientWidth;
+
+const browserHeight = document.documentElement.clientHeight;
 
 const browserMoviesPage = new Vue({
   el: '#browserMoviesPage',
   data: {
-    currentImgIndex: 1,
+    currentImgIndex: 0,
     currentMovies: nowShowingMovies
+  },
+  mounted: function() {
+
   },
   methods: {
     onScrollPage: function() {
@@ -112,6 +119,7 @@ const browserMoviesPage = new Vue({
   watch: {
     currentBackgroundPoster: function() {
       const { backgroundPosterImg } = this.$refs;
+      
       TweenMax.fromTo(
         backgroundPosterImg,
         0.7,
@@ -122,7 +130,8 @@ const browserMoviesPage = new Vue({
     currentImgIndex: function() {
       const { nowShowingMovieSlider } = this.$refs;
       TweenMax.to(nowShowingMovieSlider, 0.7, {
-        y: 800 * imgMultiplyCoeff[this.currentImgIndex],
+        y: (500*0.9 + browserHeight * 0.27) * imgMultiplyCoeff[this.currentImgIndex]
+        + this.currentImgIndex * 13,
         ease: Back.easeOut.config(1)
       });
     },
