@@ -1,9 +1,13 @@
 /* ---------------------------------------------------------------------------------------------------- */
 /* GLOBAL */
-
 @font-face {
-  font-family: 'League Spartan Bold';
-  src: url('assets/fonts/LeagueSpartan-Bold.otf') format('otf');
+    font-family: 'League Spartan';
+    src: url('assets/fonts/LeagueSpartan-Bold.eot');
+    src: url('assets/fonts/LeagueSpartan-Bold.eot?#iefix') format('embedded-opentype'),
+        url('assets/fonts/LeagueSpartan-Bold.woff') format('woff'),
+        url('assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
 html,
@@ -30,7 +34,7 @@ body {
   transition: box-shadow .4s ease-out, background-color .4s ease-out; 
 }
 
-.btn:focus {
+.btn:focus button:focus {
   outline: 0 auto -webkit-focus-ring-color;
   outline: none;
 }
@@ -58,7 +62,7 @@ body {
 }
 
 .fontSpartan {
-  font-family: "League Spartan Bold", sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
 
 .fontMontserrat {
@@ -244,7 +248,7 @@ body {
 
 #browserMoviesPage .movieTitle {
   position: absolute;
-  top: 65%;
+  top: 57%;
   left: 55%;
 }
 
@@ -259,13 +263,12 @@ body {
   flex-direction: row;
   transform: rotate(-90deg);
   position: absolute;
-  bottom: 30%;
-  left: -8em;
+  bottom: 41%;
+  left: -9.5em;
 }
 
 #browserMoviesPage .verticalBarChooseTypeOfMovies div {
-  margin-left: 1em;
-  margin-right: 2em;
+  margin: 0 2em;
   font-size: 1.5em;
   font-weight: 500;
   cursor: pointer;
@@ -288,47 +291,47 @@ body {
 #browserMoviesPage .movieReleaseDate h3 {
   font-size: 1.3em;
   margin: 0.1em 0 0.1em 0;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 #browserMoviesPage .movieReleaseDate h2 {
   font-size: 1.5em;
   margin: 0.1em 0 0.1em 0;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 #browserMoviesPage .movieInfo {
   position: absolute;
-  top: 40%;
-  bottom: 50%;
-  left: 70%;
+  top: 42%;
+  left: 65%;
 }
 
 #browserMoviesPage .movieInfo div {
-  font-weight: 200;
-  margin-top: 1em;
+  font-weight: 300;
   margin-bottom: 1em;
 }
 
-
-#browserMoviesPage .movieInfo :first-child {
+#browserMoviesPage .movieInfo :last-child {
   font-size: 1.4em;
 }
 
-#browserMoviesPage .movieInfo :last-child {
-  font-size: 1.5em;
-}
-
 #browserMoviesPage .movieInfo button {
-  font-size: 1.2em;
-  font-weight: 600;
-  width: 5em;
-  height: 31px;
-  padding-left: 1.4em;
-  padding-right: 1.4em;
+  font-size: 1.4em;
+  font-weight: 700;
+  padding: 0.15em 1em 0.1em;
   text-align: center;
-  border-radius: 0.5em;
+  border-radius: 6px;
   background-color: #FFB903;
   border: none;
 }
 
+#browserMoviesPage .movieInfo .idmbScore{
+  margin-left: 0.8em;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+#browserMoviesPage .movieInfo .idmbScore span{
+  font-weight: 500;
+  font-size: 1.4em;
+}

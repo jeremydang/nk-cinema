@@ -4,7 +4,7 @@ let nowShowingMovies = [
     title: ['Star Wars: The', 'Last Jedi'],
     releaseDate: '15 December, 2017',
     imdbScore: 9.0,
-    category: 'Action, Adventure, Fantasy',
+    category: 'Adventure, Fantasy',
     runningTime: '2h 32min'
   },
   {
@@ -12,7 +12,7 @@ let nowShowingMovies = [
     title: ['Wonder Woman'],
     releaseDate: '2 June, 2017',
     imdbScore: 7.6,
-    category: 'Action, Adventure, Fantasy',
+    category: 'Action, Fantasy',
     runningTime: '2h 21min'
   },
   {
@@ -20,7 +20,7 @@ let nowShowingMovies = [
     title: ['Blade Runner', '2049'],
     releaseDate: '6 October, 2017',
     imdbScore: 8.4,
-    category: 'Mystery, Sci-Fi, Thriller',
+    category: 'Mystery, Sci-Fi',
     runningTime: '2h 44min'
   }
 ];
@@ -36,7 +36,7 @@ let comingSoonMovies = [
     title: ['Justice League'],
     releaseDate: '17 November, 2017',
     imdbScore: 7.2,
-    category: 'Action, Adventure, Fantasy',
+    category: 'Action, Fantasy',
     runningTime: '2h'
   },
   {
@@ -44,7 +44,7 @@ let comingSoonMovies = [
     title: ['Thor', 'Ragnarok'],
     releaseDate: '3 November, 2017',
     imdbScore: 8.2,
-    category: 'Action, Adventure, Comedy',
+    category: 'Adventure, Comedy',
     runningTime: '2h 10min'
   },
   {
@@ -52,7 +52,7 @@ let comingSoonMovies = [
     title: ["Assassin's", "Creed"],
     releaseDate: '21 December 2016',
     imdbScore: 5.8,
-    category: 'Action, Adventure, Fantasy',
+    category: 'Action, Adventure',
     runningTime: '1h 55min'
   }
 ];
