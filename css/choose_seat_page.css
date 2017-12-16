@@ -21,6 +21,8 @@
   margin-right: 60px;
   padding-top: 40px;
   padding-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 #chooseSeatPage .seatIcon {
@@ -72,6 +74,7 @@
 #chooseSeatPage .screenImg {
   position: absolute;
   top: 14em;
+  z-index: 0;
 }
 
 #chooseSeatPage .leftSeats,
