@@ -1,0 +1,171 @@
+#chooseSeatPage {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(41, 41, 41, 0) 50%),
+  linear-gradient(0, rgba(0, 0, 0, 1) 0%, rgba(41, 41, 41, 0) 50%);
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+#chooseSeatPage .selectSeatsContainer {
+  background-color: #140029;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+#chooseSeatPage .seatsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #140029;
+  margin-left: 60px;
+  margin-right: 60px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+#chooseSeatPage .seatIcon {
+  padding: 2px;
+  cursor: pointer;
+  font-size: 2.5em;
+}
+
+#chooseSeatPage .movieInfoContainer {
+  display: flex;
+}
+
+#chooseSeatPage .movieInfoContainer :first-child {
+  flex: 1;
+  padding-left: 48px;
+  padding-top: 24px;
+}
+
+#chooseSeatPage .movieInfoContainer .movieScore {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 24px;
+  padding-right: 48px;
+}
+
+#chooseSeatPage .movieInfoContainer .movieDetail h2 {
+  padding: 0;
+  margin: 0;
+}
+
+#chooseSeatPage .movieInfoContainer .movieDetail h2:first-child {
+  font-weight: 600;
+}
+
+#chooseSeatPage .movieInfoContainer .movieDetail h2:last-child {
+  font-weight: 200;
+  font-size: 1.2em;
+  margin-top: 5px;
+}
+
+#chooseSeatPage .screenContainer {
+  padding-top: 9em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chooseSeatPage .screenImg {
+  position: absolute;
+  top: 14em;
+}
+
+#chooseSeatPage .leftSeats,
+#chooseSeatPage .middleSeats,
+#chooseSeatPage .rightSeats,
+#chooseSeatPage .leftNumber,
+#chooseSeatPage .rightNumber {
+  display: flex;
+  flex-direction: column;
+}
+
+#chooseSeatPage .leftSeats {
+  padding-right: 80px;
+  padding-left: 60px;
+}
+
+#chooseSeatPage .rightSeats {
+  padding-left: 80px;
+  padding-right: 60px;
+}
+
+#chooseSeatPage .middleSeats {
+  padding-right: 14px;
+}
+
+#chooseSeatPage .leftNumber h2,
+#chooseSeatPage .rightNumber h2 {
+  font-size: 1.2em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+#chooseSeatPage .seatsRealContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#chooseSeatPage .divider,
+#chooseSeatPage .bookingInfo {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+#chooseSeatPage .divider {
+  border-bottom: 1px solid #404040;
+}
+
+#chooseSeatPage .bookingInfo {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#chooseSeatPage .bookingInfo .seatInfo h2 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.3em;
+  margin-left: 8px;
+  margin-right: 32px;
+}
+
+#chooseSeatPage .bookingInfo .seatInfo,
+#chooseSeatPage .bookingInfo .seatStatus {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+#chooseSeatPage .bookingInfo .seatStatus {
+  justify-content: flex-end;
+}
+
+#chooseSeatPage .bookingInfo .seatStatus h2 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.3em;
+  margin-left: 8px;
+  margin-right: 32px;
+}
+
+#chooseSeatPage .bookingInfo .seatStatus .nextBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #531EC6;
+  border: none;
+}
+
+#chooseSeatPage .bookingInfo .seatStatus .nextBtn .arrowIcon {
+  color: white;
+  font-size: 26px;
+  font-weight: 1000;
+}

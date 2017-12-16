@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/choose_seat_page.css">
+  <title>Document</title>
+</head>
+
+<body>
+<div id="chooseSeatPage">
+  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan">NK.</h2>
+    <h2 class="fontWhite fontSpartan">Menu</h2>
+  </div>
+  <div class="selectSeatsContainer">
+    <div class="movieInfoContainer">
+      <div class="movieDetail">
+        <h2 class="fontWhite fontMontserrat">Blade Runner 2049</h2>
+        <h2 class="fontLightGray fontMontserrat">Action, Sci-fi | 1h 20min | R Limit</h2>
+      </div>
+      <div class="movieScore fontWhite">Hehe</div>
+    </div>
+    <div class="screenContainer">
+      <img src="/assets/images/cinema_screen.png" height="233" width="533" class="screenImg">
+    </div>
+    <div class="seatsContainer">
+      <div class="leftNumber">
+        <h2 class="fontLightGray fontMontserrat">F</h2>
+        <h2 class="fontLightGray fontMontserrat">E</h2>
+        <h2 class="fontLightGray fontMontserrat">D</h2>
+        <h2 class="fontLightGray fontMontserrat">C</h2>
+        <h2 class="fontLightGray fontMontserrat">B</h2>
+        <h2 class="fontLightGray fontMontserrat">A</h2>
+      </div>
+      <div class="leftSeats">
+        <div v-for="seatRow in seatRows">
+          <i class="material-icons seatIcon" v-for="seatNumber in seatNumbers[0]"
+             :style="{color: seatProperties[seatRow][seatNumber].color}"
+             @click="onClickSelectSeat(seatRow, seatNumber)"
+             :ref="seatRow + seatNumber">weekend</i>
+        </div>
+      </div>
+
+      <div class="middleSeats">
+        <div v-for="seatRow in seatRows">
+          <i class="material-icons seatIcon" v-for="seatNumber in seatNumbers[1]"
+             :style="{color: seatProperties[seatRow][seatNumber].color}"
+             @click="onClickSelectSeat(seatRow, seatNumber)"
+             :ref="seatRow + seatNumber">weekend</i>
+        </div>
+      </div>
+
+      <div class="rightSeats">
+        <div v-for="seatRow in seatRows">
+          <i class="material-icons seatIcon" v-for="seatNumber in seatNumbers[2]"
+             :style="{color: seatProperties[seatRow][seatNumber].color}"
+             @click="onClickSelectSeat(seatRow, seatNumber)"
+             :ref="seatRow + seatNumber">weekend</i>
+        </div>
+      </div>
+
+      <div class="rightNumber">
+        <h2 class="fontLightGray fontMontserrat">F</h2>
+        <h2 class="fontLightGray fontMontserrat">E</h2>
+        <h2 class="fontLightGray fontMontserrat">D</h2>
+        <h2 class="fontLightGray fontMontserrat">C</h2>
+        <h2 class="fontLightGray fontMontserrat">B</h2>
+        <h2 class="fontLightGray fontMontserrat">A</h2>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="bookingInfo">
+      <div class="seatInfo">
+        <i class="material-icons seatIcon" style="color: #531EC6">weekend</i>
+        <h2 class="fontWhite fontMontserrat">Available</h2>
+        <i class="material-icons seatIcon" style="color: #474747">weekend</i>
+        <h2 class="fontWhite fontMontserrat">Taken</h2>
+        <i class="material-icons seatIcon" style="color: #FF1F2F">weekend</i>
+        <h2 class="fontWhite fontMontserrat">Selected</h2>
+      </div>
+      <div class="seatStatus">
+        <h2 class="fontWhite fontMontserrat">
+          <span class="fontLightGray">Seat:</span>
+          <span style="color: #C4A8FF">{{ selectedSeats.join(', ') }}</span>
+        </h2>
+        <h2 class="fontWhite fontMontserrat">
+          <span class="fontLightGray">Price:</span>
+          <span style="color: #C4A8FF">42,00 &euro;</span>
+        </h2>
+        <button class="nextBtn"><i class="material-icons arrowIcon">arrow_forward</i></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="libs/vue.min.js"></script>
+<script src="libs/TweenMax.min.js"></script>
+<script src="js/choose_seat_page.js"></script>
+</body>
+
+</html>
