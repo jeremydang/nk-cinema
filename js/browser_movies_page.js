@@ -49,7 +49,7 @@ let comingSoonMovies = [
   },
   {
     posterImgPath: 'assets/images/assassin_creed_poster.jpg',
-    title: ["Assassin's", "Creed"],
+    title: ["Assassin's", 'Creed'],
     releaseDate: '21 December 2016',
     imdbScore: 5.8,
     category: 'Action, Adventure',
@@ -72,10 +72,14 @@ const browserMoviesPage = new Vue({
   el: '#browserMoviesPage',
   data: {
     currentImgIndex: 0,
-    currentMovies: nowShowingMovies
-  },
-  mounted: function() {
-
+    currentMovies: nowShowingMovies,
+    currentBackgroundPoster: nowShowingMovies[0].posterUrlPath,
+    currentMovieTitleLine1: nowShowingMovies[0].title[0],
+    currentMovieTitleLine2: nowShowingMovies[0].title[1],
+    currentMovieReleaseDate: nowShowingMovies[0].releaseDate,
+    currentMovieCategory: nowShowingMovies[0].category,
+    currentMovieImdbScore: nowShowingMovies[0].imdbScore,
+    currentMovieRunningTime: nowShowingMovies[0].runningTime
   },
   methods: {
     onScrollPage: function() {
@@ -91,49 +95,55 @@ const browserMoviesPage = new Vue({
       this.currentMovies = comingSoonMovies;
     }
   },
-  computed: {
-    currentBackgroundPoster: function() {
-      return this.currentMovies[this.currentImgIndex].posterUrlPath;
-    },
-    currentMovieTitleLine1: function() {
-      const movieTitle = this.currentMovies[this.currentImgIndex].title;
-      return movieTitle[0];
-    },
-    currentMovieTitleLine2: function() {
-      const movieTitle = this.currentMovies[this.currentImgIndex].title;
-      return movieTitle[1];
-    },
-    currentMovieReleaseDate: function() {
-      return this.currentMovies[this.currentImgIndex].releaseDate;
-    },
-    currentMovieCategory: function() {
-      return this.currentMovies[this.currentImgIndex].category;
-    },
-    currentMovieImdbScore: function() {
-      return this.currentMovies[this.currentImgIndex].imdbScore;
-    },
-    currentMovieRunningTime: function() {
-      return this.currentMovies[this.currentImgIndex].runningTime;
-    }
-  },
   watch: {
     currentBackgroundPoster: function() {
       const { backgroundPosterImg } = this.$refs;
       TweenMax.fromTo(
         backgroundPosterImg,
         0.7,
-        { opacity: 0.2,  ease: Power1.easeInOut },
-        { opacity: 0.7, delay: 0.7,  ease: Power1.easeInOut },
-
+        { opacity: 0.2, ease: Power1.easeInOut },
+        { opacity: 0.7, delay: 0.7, ease: Power1.easeInOut }
       );
     },
     currentImgIndex: function() {
       const { nowShowingMovieSlider } = this.$refs;
       TweenMax.to(nowShowingMovieSlider, 1.2, {
-        y: (500*0.9 + browserHeight * 0.27) * imgMultiplyCoeff[this.currentImgIndex]
-        + this.currentImgIndex * 13,
+        y:
+          (500 * 0.9 + browserHeight * 0.27) *
+            imgMultiplyCoeff[this.currentImgIndex] +
+          this.currentImgIndex * 13,
         ease: Expo.easeInOut
       });
+
+      setTimeout(() => {
+        this.currentBackgroundPoster = this.currentMovies[
+          this.currentImgIndex
+        ].posterUrlPath;
+
+        this.currentMovieTitleLine1 = this.currentMovies[
+          this.currentImgIndex
+        ].title[0];
+
+        this.currentMovieTitleLine2 = this.currentMovies[
+          this.currentImgIndex
+        ].title[1];
+
+        this.currentMovieReleaseDate = this.currentMovies[
+          this.currentImgIndex
+        ].releaseDate;
+
+        this.currentMovieCategory = this.currentMovies[
+          this.currentImgIndex
+        ].category;
+
+        this.currentMovieImdbScore = this.currentMovies[
+          this.currentImgIndex
+        ].imdbScore;
+
+        this.currentMovieRunningTime = this.currentMovies[
+          this.currentImgIndex
+        ].runningTime;
+      }, 2000);
     },
     currentMovies: function() {
       const { nowShowing, comingSoon } = this.$refs;
