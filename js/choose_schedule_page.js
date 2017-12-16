@@ -15,6 +15,16 @@ let date = [];
 
 let index = 0;
 
+const seatsId = ['seat0'];
+
+function createSeat(seatId) {
+  const seat = document.createElement('i');
+  seat.className = 'material-icons seatIcon';
+  seat.innerHTML = 'weekend';
+  seat.setAttribute('id', seatId);
+  return seat;
+}
+
 const chooseSchedule = new Vue({
   el: '#chooseSchedule',
   data: {
@@ -26,9 +36,14 @@ const chooseSchedule = new Vue({
     activeDate: '',
     activeTime: '',
     dx: 0,
-    dy: 0
+    dy: 0,
+    totalSeatPrice: 14,
+    seatsId: seatsId
   },
   mounted: function (){
+
+    this.$refs.seats.appendChild(createSeat(this.seatsId[0]));
+
     let d = new Date();
     for(index; index < baseWeekDay.length; index++){
       index === 0? d.setDate(d.getDate()) : d.setDate(d.getDate() + 1);
@@ -52,10 +67,10 @@ const chooseSchedule = new Vue({
 
       const boundingClientRect = btn.getBoundingClientRect();
 
-      const x = e.clientX - boundingClientRect.left
-      const y = e.clientY - boundingClientRect.top
-      const xc = boundingClientRect.width/2
-      const yc = boundingClientRect.height/2
+      const x = e.clientX - boundingClientRect.left;
+      const y = e.clientY - boundingClientRect.top;
+      const xc = boundingClientRect.width/2;
+      const yc = boundingClientRect.height/2;
       
       dx = x - xc;
       dy = y - yc;
@@ -74,6 +89,26 @@ const chooseSchedule = new Vue({
       const tl = new TimelineMax();
       tl.to(btn, 0.2, {z:-65, ease: Power4.easeOut})
       .to(btn, 0.2, {z:0, ease: Power4.easeOut}, '+=0.1') // temporary alternative to mouseup
+    },
+    addSeat: function (e) {
+      const newlyAddedSeatId = 'seat' + this.seatsId.length;
+      this.seatsId.push(newlyAddedSeatId);
+      const seat = createSeat(newlyAddedSeatId);
+      this.$refs.seats.appendChild(seat);
+      const newlyAddedSeatElement = document.getElementById(newlyAddedSeatId);
+      TweenMax.fromTo(newlyAddedSeatElement, 0.5, { opacity: 0 }, { opacity: 1 });
+    },
+    removeSeat: function (e) {
+      const lastSeatId = seatsId[seatsId.length - 1];
+      const lastSeatElement = document.getElementById(lastSeatId);
+      this.seatsId.pop();
+      TweenMax.fromTo(lastSeatElement, 0.2, { opacity: 1 }, { opacity: 0, onComplete: () => this.$refs.seats.removeChild(lastSeatElement) });
+    }
+  },
+  watch: {
+    seatsId: function () {
+      this.totalSeatPrice = 14 * this.seatsId.length;
+      TweenMax.fromTo(this.$refs.totalSeatPrice, 0.5, { opacity: 0 }, { opacity: 1 });
     }
   }
 });
