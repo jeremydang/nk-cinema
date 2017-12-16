@@ -50,13 +50,20 @@ const chooseSetPage = new Vue({
       const { color } = this.seatProperties[seatRow][seatNumber];
       if (color !== takenColor) {
         if (color === availableColor) {
+          TweenMax.fromTo(this.$refs[seatRow + seatNumber], 0.5, { color: color }, { color: selectedColor });
           this.seatProperties[seatRow][seatNumber].color = selectedColor;
           this.selectedSeats.push(seatRow + seatNumber);
         } else {
+          TweenMax.fromTo(this.$refs[seatRow + seatNumber], 0.5, { color: color }, { color: availableColor });
           this.seatProperties[seatRow][seatNumber].color = availableColor;
           this.selectedSeats = this.selectedSeats.filter(seat => seat !== seatRow + seatNumber);
         }
       }
+    }
+  },
+  watch: {
+    selectedSeats: function () {
+      TweenMax.fromTo(this.$refs.selectedSeats, 0.5, { opacity: 0 }, { opacity: 1 });
     }
   }
 });
