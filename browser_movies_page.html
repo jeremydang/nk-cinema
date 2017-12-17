@@ -16,7 +16,8 @@
 </head>
 <body>
 <div id="browserMoviesPage" @wheel="onScrollPage">
-  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"></div>
+  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"
+       ref="backgroundPosterImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan">NK.</h2>
     <h2 class="fontWhite fontSpartan">Menu</h2>
