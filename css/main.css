@@ -76,6 +76,10 @@ a{
   font-family: "Montserrat", sans-serif;
 }
 
+.fontPurple {
+  color: #C4A8FF;
+}
+
 .absolutePos {
   position: absolute;
 }
