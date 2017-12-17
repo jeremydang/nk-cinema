@@ -1,0 +1,71 @@
+#chooseAreaPage .theaterInfoContainer {
+  flex: 1;
+  font-weight: 300;
+}
+
+#chooseAreaPage .mapContainer {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+#chooseAreaPage .mapContainer h2 {
+  font-size: 1em;
+  font-weight: 300;
+  padding-left: 56px;
+}
+
+#chooseAreaPage .mapPin {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+#chooseAreaPage .mapPin h2 {
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 16px;
+}
+
+#chooseAreaPage .mapPinOuter {
+  width: 19px;
+  height: 19px;
+  border-radius: 19px;
+  background-color: #531EC6;
+  border: 2px solid #C4A8FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chooseAreaPage .mapPinInner {
+  width: 13px;
+  height: 13px;
+  border-radius: 13px;
+  background-color: #C4A8FF;
+}
+
+#chooseAreaPage .mapPinRovaniemi {
+  top: 280px;
+  left: 939px;
+}
+
+#chooseAreaPage .mapPinOulu {
+  top: 360px;
+  left: 950px;
+}
+
+#chooseAreaPage .mapPinTampere {
+  top: 660px;
+  left: 892px;
+}
+
+#chooseAreaPage .mapPinTurku {
+  top: 730px;
+  left: 844px;
+}
+
+#chooseAreaPage .mapPinHelsinki {
+  top: 730px;
+  left: 1040px;
+}
