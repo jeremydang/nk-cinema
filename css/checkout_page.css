@@ -1,0 +1,261 @@
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.beverageChooserContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chooseFoodContainer {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  border-bottom: 1px solid #404040;
+  padding-bottom: 16px;
+}
+
+.chooseFoodContainer h2 {
+  font-weight: 300;
+  font-size: 1.1em;
+}
+
+.colaContainer,
+.popCornContainer {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: center;
+}
+
+.colaContainer {
+  padding-top: 5px;
+  margin-left: 8px;
+}
+
+.colaContainer img {
+  opacity: 0.3;
+}
+
+.popCornContainer h2 {
+  padding: 0;
+  margin: 0;
+}
+
+.chooseFoodContainer .buttonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 32px;
+}
+
+.chooseFoodContainer .btnPlus,
+.chooseFoodContainer .btnMinus {
+  width: 28px;
+  height: 28px;
+  border-radius: 12px;
+  border: none;
+  background-color: #531EC6;
+  font-size: 1.1em;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 16px;
+}
+
+.bookingContainer .checkoutDetailContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookingContainer .checkoutDetailContainer h2 {
+  font-weight: 300;
+  font-size: 1.2em;
+  padding: 0;
+  margin: 1px;
+}
+
+.bookingContainer .checkoutDetailContainer > div h2:last-child {
+  margin-left: auto;
+}
+
+.checkoutDetailContainer > div {
+  display: flex;
+  width: 80%;
+}
+
+.checkoutDetailContainer .placeDetail > div h2:first-child {
+  font-size: 1.1em;
+}
+
+.checkoutDetailContainer .placeDetail div:last-child {
+  margin-left: auto;
+}
+
+.checkoutDetailContainer .placeDetail {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.checkoutDetailContainer .placeDetail h2 {
+  margin: 0;
+}
+
+.checkoutDetailContainer .totalPrices {
+  border-top: 1px solid #C4A8FF;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+.checkoutDetailContainer .buttonContainer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkoutDetailContainer .buttonContainer button {
+  font-size: 1.2em;
+  padding: 8px 40px 8px 40px;
+  background-color: #531EC6;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+}
+
+.checkoutDetailContainer .totalPrices {
+  color: #FFB903;
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #404040;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  padding-left: 72px;
+  padding-right: 72px;
+}
+
+.rightPanel h2 {
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+.rightPanel input {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  padding-bottom: 8px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #878787;
+  color: #C4A8FF;
+  font-weight: 200;
+}
+
+.rightPanel input::placeholder {
+  color: #C4A8FF;
+}
+
+.rightPanel .visaForm {
+  height: 182px;
+  width: 96%;
+  background-color: #531EC6;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+
+.rightPanel .visaLogoContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+.rightPanel .visaLogoContainer i {
+  font-size: 2.3em;
+}
+
+.rightPanel .visaNumberContainer {
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-top: 16px;
+}
+
+.rightPanel .visaNumberContainer input {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  padding-bottom: 2px;
+}
+
+.rightPanel .visaNumberContainer input::placeholder {
+  color: white;
+  font-weight: 600;
+}
+
+.rightPanel .visaDateCVVContainer {
+  display: flex;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-top: 16px;
+}
+
+.visaDateCVVContainer .cvvNumber {
+  margin-left: auto;
+}
+
+.visaDateCVVContainer .expiryDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visaDateCVVContainer input {
+  color: white;
+}
+
+.visaDateCVVContainer input::placeholder {
+  color: white;
+  font-weight: 300;
+}
+
+.visaDateCVVContainer .expiryDate input {
+  width: 24px;
+  padding-bottom: 0;
+  font-size: 18px;
+}
+
+.visaDateCVVContainer .expiryDate h2 {
+  margin: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-weight: 300;
+}
+
+.visaDateCVVContainer .cvvNumber input {
+  width: 30px;
+  font-weight: 600;
+  padding-bottom: 0;
+  padding-top: 0;
+  font-size: 18px;
+  margin: 0;
+}
+
+.visaDateCVVContainer .cvvNumber h2 {
+  font-size: 0.6em;
+  margin: 0;
+  padding: 0;
+}
