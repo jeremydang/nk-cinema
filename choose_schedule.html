@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/choose_schedule.css">
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+<div id="chooseSchedule" class="bookingPage">
+  <div class="backgroundPosterImg fullDivImg"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan">NK.</h2>
+    <h2 class="fontWhite fontSpartan">Menu</h2>
+  </div>
+  <div class="bookingContainer">
+    <div class="posterContainer">
+      
+    </div>
+    <div class="scheduleContainer">
+
+      <div class="movieInfoContainer">
+        <div class="movieDetail">
+          <h2 class="fontWhite fontMontserrat">Blade Runner 2049</h2>
+          <h2 class="fontLightGray fontMontserrat">Action, Sci-fi | 1h 20min | R Limit</h2>
+        </div>
+        <div class="movieScore fontWhite">
+          <button>IMDb</button>
+          <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">8.4/</span> 10<span>
+        </div>
+      </div>
+      
+      <div class="scheduleInfoContainer">
+        <div class="chooseDate scheduleSection">
+          <h2 class="scheduleTitle fontWhite fontMontserrat">{{ month }}</h2>
+          <div class="dateContainer">
+            <script type="text/javascript">
+              for(let i=0; i<7; i++){
+                document.write(
+                  `<div class="date fontWhite fontMontserrat">
+                      <p class="fontLightGray weekday">{{ weekDay[`+ i + `] }}</p>
+                      <a @click="setActiveDate(`+ i + `)" :class="{active:`+ i + ` === activeDate}">
+                      {{ date[`+ i + `] }}</a>
+                   </div>`)}
+            </script>
+          </div>
+        </div>
+
+        <div class="chooseTime scheduleSection">
+          <h2 class="scheduleTitle fontWhite fontMontserrat">NorthKino Plaza (Oulu)</h2>
+          <div class="timeContainer">
+            <script type="text/javascript">
+              for(let i=0; i<5; i++){
+                document.write(
+                  `<div class="time fontWhite fontMontserrat">
+                      <p class="fontLightGray movieType">{{ movieType[`+ i + `] }}</p>
+                      <a @click="setActiveTime(`+ i + `)" :class="{active:`+ i + ` === activeTime}">
+                      {{ time[`+ i + `] }}</a>
+                   </div>`)}
+            </script>
+          </div>
+        </div>
+
+        <div class="chooseSeat scheduleSection">
+          <h2 class="scheduleTitle fontWhite fontMontserrat">Seats</h2>
+          <div class="seatContainer">
+            <div class="addSeat">
+              <a><i class="material-icons operation">remove</i></a>
+              <div class="seats">
+                <i class="material-icons seatIcon">weekend</i>
+                <i class="material-icons seatIcon">weekend</i>
+                <i class="material-icons seatIcon">weekend</i>
+              </div>
+              <a><i class="material-icons operation">add</i></a>
+            </div>
+          </div>
+          <h5 class="ticketPrice fontMontserrat fontLightGray">Total: 42,00 &euro;</h5>
+        </div>
+      </div>
+
+      <button class="btn fontMontserrat fontWhite"
+       @mousemove="onMouseMove"  @mouseleave="onMouseLeave" 
+       @mousedown="onMouseDown" ref="btn">
+        <span ref="btnText">Choose seats</span>
+       </button>
+
+    </div>
+  </div>
+</div>
+<script src="libs/vue.min.js"></script>
+<script src="libs/TweenMax.min.js"></script>
+<script src="js/choose_schedule_page.js"></script>
+</body>
+</html>
