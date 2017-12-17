@@ -119,20 +119,20 @@ const browserMoviesPage = new Vue({
   watch: {
     currentBackgroundPoster: function() {
       const { backgroundPosterImg } = this.$refs;
-      
       TweenMax.fromTo(
         backgroundPosterImg,
         0.7,
-        { opacity: 0 },
-        { opacity: 0.7 }
+        { opacity: 0.2,  ease: Power1.easeInOut },
+        { opacity: 0.7, delay: 0.7,  ease: Power1.easeInOut },
+
       );
     },
     currentImgIndex: function() {
       const { nowShowingMovieSlider } = this.$refs;
-      TweenMax.to(nowShowingMovieSlider, 0.7, {
+      TweenMax.to(nowShowingMovieSlider, 1.2, {
         y: (500*0.9 + browserHeight * 0.27) * imgMultiplyCoeff[this.currentImgIndex]
         + this.currentImgIndex * 13,
-        ease: Back.easeOut.config(1)
+        ease: Expo.easeInOut
       });
     },
     currentMovies: function() {

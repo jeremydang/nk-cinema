@@ -7,10 +7,10 @@ const homePage = new Vue({
   mounted: function() {
   	const tl = new TimelineMax();
   	tl.to($('#preloader'), 1.5, {autoAlpha: 0, ease:Power1.easeIn})
-  	.fromTo($('.btnBookTicket'), 1, 
+  	.fromTo($('.btn'), 1, 
   		{bottom:-30, ease: Power1.easeOut},
   		{bottom:0, ease: Power1.easeOut}, '-=0.8')
-  	.fromTo($('.btnBookTicket'), 2, 
+  	.fromTo($('.btn'), 2, 
   		{opacity:0, ease: Power1.easeOut},
   		{opacity:1, ease: Power1.easeOut}, '-=0.8')
   	.staggerFromTo($('.movieTitle .blindText span'), 0.7, 
@@ -22,10 +22,10 @@ const homePage = new Vue({
     	location.href='browser_movies_page.html';
     },
     onMouseMove: function (e) {
-    	const { btnBookTicket } = this.$refs;
+    	const { btn } = this.$refs;
     	const { btnText } = this.$refs;
 
-    	const boundingClientRect = btnBookTicket.getBoundingClientRect();
+    	const boundingClientRect = btn.getBoundingClientRect();
 
     	const x = e.clientX - boundingClientRect.left
     	const y = e.clientY - boundingClientRect.top
@@ -35,25 +35,25 @@ const homePage = new Vue({
     	dx = x - xc;
     	dy = y - yc;
 
-    	TweenMax.to(btnBookTicket, 0.4, {rotationX:dy/-1, rotationY:dx/10, ease: Sine.easeOut, 
+    	TweenMax.to(btn, 0.4, {rotationX:dy/-1, rotationY:dx/10, ease: Sine.easeOut, 
     		transformPerspective:900, transformOrigin:"center", transformStyle: "preserve-3d"});
 
     },
     onMouseLeave: function(e){
-    	const { btnBookTicket } = this.$refs;
+    	const { btn } = this.$refs;
     	const { btnText } = this.$refs;
-    	TweenMax.to([btnBookTicket,btnText], 0.4, {rotationX:0, rotationY:0, ease: Sine.easeOut});
+    	TweenMax.to([btn,btnText], 0.4, {rotationX:0, rotationY:0, ease: Sine.easeOut});
     },
     onMouseDown: function(e){
-    	const { btnBookTicket } = this.$refs;
+    	const { btn } = this.$refs;
     	const tl = new TimelineMax();
-    	tl.to(btnBookTicket, 0.2, {z:-65, ease: Power4.easeOut})
-    	.to(btnBookTicket, 0.2, {z:0, ease: Power4.easeOut}, '+=0.1') // temporary alternative to mouseup
+    	tl.to(btn, 0.2, {z:-65, ease: Power4.easeOut})
+    	.to(btn, 0.2, {z:0, ease: Power4.easeOut}, '+=0.1') // temporary alternative to mouseup
     },
     //Mouse up not working
     onMouseUp: function(e){
-    	const { btnBookTicket } = this.$refs;
-    	TweenMax.to(btnBookTicket, 0.4, {z:0, ease: Power4.easeOut});
+    	const { btn } = this.$refs;
+    	TweenMax.to(btn, 0.4, {z:0, ease: Power4.easeOut});
     	console.log("test")
     }
   }

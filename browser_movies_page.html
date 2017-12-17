@@ -33,8 +33,6 @@
     <h2 class="fontWhite fontSpartan">{{ currentMovieTitleLine1 }}</h2>
     <h2 class="fontWhite fontSpartan">{{ currentMovieTitleLine2 }}</h2>
   </div>
-  <div class="movieDetail"></div>
-  <div class="movieTime"></div>
   <div class="verticalBarChooseTypeOfMovies">
     <div class="fontWhite fontMontserrat nowShowing" @click="onClickNowShowing" ref="nowShowing">Now showing</div>
     <div class="fontWhite fontMontserrat comingSoon" @click="onClickComingSoon" ref="comingSoon">Coming soon</div>
@@ -44,11 +42,11 @@
     <h2 class="fontWhite fontMontserrat">{{ currentMovieReleaseDate }}</h2>
   </div>
   <div class="movieInfo">
-    <div class="fontLightGray fontMontserrat">
+    <div class="fontLightGray fontMontserrat movieScore">
       <button>IMDb</button>
       <span class="idmbScore"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
     </div>
-    <div class="fontWhite fontMontserrat">
+    <div class="fontWhite fontMontserrat movieDetail">
       {{ currentMovieCategory }} | {{ currentMovieRunningTime }}
     </div>
   </div>
