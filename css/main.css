@@ -34,7 +34,7 @@ body {
   transition: box-shadow .4s ease-out, background-color .4s ease-out; 
 }
 
-.btn:focus button:focus {
+.btn:focus, button:focus, .btn:active, button:active {
   outline: 0 auto -webkit-focus-ring-color;
   outline: none;
 }
@@ -48,6 +48,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+a{
+  cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
@@ -101,7 +105,6 @@ body {
 }
 
 .header {
-  flex: 1;
   display: flex;
   align-items: baseline;
 }
@@ -309,27 +312,27 @@ body {
   margin-bottom: 1em;
 }
 
-#browserMoviesPage .movieInfo :last-child {
+#browserMoviesPage .movieInfo .movieDetail {
   font-size: 1.4em;
 }
 
-#browserMoviesPage .movieInfo button {
+.movieScore button {
   font-size: 1.4em;
   font-weight: 700;
-  padding: 0.15em 1em 0.1em;
+  padding: 2px 20px 1px;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: #FFB903;
   border: none;
 }
 
-#browserMoviesPage .movieInfo .idmbScore{
+.movieScore .idmbScore{
   margin-left: 0.8em;
   font-size: 1.1em;
   font-weight: 500;
 }
 
-#browserMoviesPage .movieInfo .idmbScore span{
+.movieScore .idmbScore span{
   font-weight: 500;
   font-size: 1.4em;
 }
