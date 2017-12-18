@@ -1,0 +1,39 @@
+#movieTrailerPage {
+  background: linear-gradient(180deg,
+  rgba(9, 0, 18, 1) 0%, rgba(23, 10, 44, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  height: 100%;
+  overflow-y: hidden;
+}
+
+#movieTrailerPage .bookingContainer {
+  background-color: transparent;
+  flex-direction: column;
+  width: 1100px;
+  height: 100%;
+  margin: -2em auto;
+}
+
+.theaterLightContainer {
+  background: url('/assets/images/theater-light-11.png') no-repeat top center;
+  height: 100px;
+  background-size: 90%;
+}
+
+.videoTrailerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#movieTrailerPage .footer {
+  display: flex;
+  margin: 32px 54px;
+  align-items: center;
+}
+
+#movieTrailerPage .bookNowBtn {
+  margin-left: auto;
+  padding: 0.5em 1.6em;
+  display: block;
+  font-size: 1.1em;
+}
