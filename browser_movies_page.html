@@ -23,11 +23,14 @@
     <h2 class="fontWhite fontSpartan menu">Menu</h2>
   </div>
   <div class="nowShowingMovieSlider" ref="nowShowingMovieSlider">
-    <div class="poster1 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[0].posterUrlPath }"@mousemove="onMouseMove"  @mouseleave="onMouseLeave" @mousedown="onMouseDown">
+    <div class="poster1 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[0].posterUrlPath }"
+         @mousemove="onMouseMove" @mouseleave="onMouseLeave" @mousedown="onMouseDown" @mouseup="onMouseUp">
     </div>
-    <div class="poster2 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[1].posterUrlPath }"@mousemove="onMouseMove"  @mouseleave="onMouseLeave" @mousedown="onMouseDown">
+    <div class="poster2 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[1].posterUrlPath }"
+         @mousemove="onMouseMove" @mouseleave="onMouseLeave" @mousedown="onMouseDown" @mouseup="onMouseUp">
     </div>
-    <div class="poster3 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[2].posterUrlPath }"@mousemove="onMouseMove"  @mouseleave="onMouseLeave" @mousedown="onMouseDown">
+    <div class="poster3 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[2].posterUrlPath }"
+         @mousemove="onMouseMove" @mouseleave="onMouseLeave" @mousedown="onMouseDown" @mouseup="onMouseUp">
     </div>
   </div>
   <div class="movieTitle" ref="movieTitle">
