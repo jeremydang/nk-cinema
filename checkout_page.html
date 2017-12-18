@@ -40,17 +40,17 @@
       <div class="beverageChooserContainer">
         <h2 class="fontMontserrat fontWhite">Enjoy your movies with some snacks</h2>
         <div class="chooseFoodContainer">
-          <div class="popCornContainer">
+          <div class="popCornContainer" ref="popCorn" @click="onClickPopcorn">
             <img src="assets/images/popcorn-icon.png" alt="Popcorn" height="100" width="100">
             <h2 class="fontWhite fontMontserrat">6,50 &euro;</h2>
           </div>
-          <div class="colaContainer">
-            <img src="assets/images/drink-icon.png" alt="Cola" height="80" width="80">
-            <h2 class="fontWhite fontMontserrat fontLightGray">4,50 &euro;</h2>
+          <div class="colaContainer" ref="cola" @click="onClickCola">
+            <img src="assets/images/drink-icon.png" alt="Cola" height="100" width="100">
+            <h2 class="fontWhite fontMontserrat">4,50 &euro;</h2>
           </div>
           <div class="buttonsContainer">
-            <button class="btnPlus"><i class="fa fa-plus fontWhite"></i></button>
-            <button class="btnMinus"><i class="fa fa-minus fontWhite"></i></button>
+            <button class="btnPlus" @click="onClickAdd"><i class="fa fa-plus fontWhite"></i></button>
+            <button class="btnMinus" @click="onClickReduce"><i class="fa fa-minus fontWhite"></i></button>
           </div>
         </div>
       </div>
@@ -74,16 +74,16 @@
           <h2>42,00 &euro;</h2>
         </div>
         <div class="popCornPrices">
-          <h2 class="fontLightGray">1 Popcorn</h2>
-          <h2>+6,50 &euro;</h2>
+          <h2 class="fontLightGray">{{ popCorn.count }} Popcorn</h2>
+          <h2>+{{ popCorn.totalPrice.toFixed(2) }} &euro;</h2>
         </div>
         <div class="drinkPrices">
-          <h2 class="fontLightGray">1 Drink</h2>
-          <h2>+4,50 &euro;</h2>
+          <h2 class="fontLightGray">{{ cola.count }} Drink</h2>
+          <h2>+{{ cola.totalPrice.toFixed(2) }} &euro;</h2>
         </div>
         <div class="totalPrices">
           <h2 class="fontPurple">Total</h2>
-          <h2>53,00 &euro;</h2>
+          <h2>{{ totalPrice.toFixed(2) }} &euro;</h2>
         </div>
         <div class="buttonContainer">
           <button class="fontMontserrat fontWhite">Confirm and pay</button>
@@ -92,9 +92,24 @@
     </div>
     <div class="rightPanel fontMontserrat fontWhite">
       <h2>Enter your contact details</h2>
-      <input type="text" placeholder="Name" class="fontMontserrat">
-      <input type="text" placeholder="Email" class="fontMontserrat">
-      <input type="text" placeholder="Phone number" class="fontMontserrat">
+      <span class="input input--hoshi">
+					<input class="input__field input__field--hoshi" type="text" id="name"/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="name">
+						<span class="input__label-content input__label-content--hoshi">Name</span>
+					</label>
+      </span>
+      <span class="input input--hoshi">
+					<input class="input__field input__field--hoshi" type="text" id="email"/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="email">
+						<span class="input__label-content input__label-content--hoshi">Email</span>
+					</label>
+      </span>
+      <span class="input input--hoshi">
+					<input class="input__field input__field--hoshi" type="text" id="phone_number"/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="phone_number">
+						<span class="input__label-content input__label-content--hoshi">Phone Number</span>
+					</label>
+      </span>
       <h2>Add your payment method</h2>
       <div class="visaForm">
         <div class="visaLogoContainer">
@@ -118,5 +133,8 @@
     </div>
   </div>
 </div>
+<script src="libs/vue.min.js"></script>
+<script src="libs/TweenMax.min.js"></script>
+<script src="js/checkout_page.js"></script>
 </body>
 </html>
