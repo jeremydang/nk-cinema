@@ -31,12 +31,10 @@
 	flex: 3.7;
 	background: url('../assets/images/blade_runner_vertical_poster.jpg') no-repeat center;
 	background-size: cover;
-}
-
-.posterContainer{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+  position: relative;
 }
 
 .posterContainer .playBtn{
