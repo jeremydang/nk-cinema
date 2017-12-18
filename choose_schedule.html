@@ -30,7 +30,7 @@
     <div class="scheduleContainer">
 
       <div class="movieInfoContainer">
-        <div class="movieDetail">
+        <div class="movieInfo">
           <h2 class="fontWhite fontMontserrat">Blade Runner 2049</h2>
           <h2 class="fontLightGray fontMontserrat">Action, Sci-fi | 1h 20min | R Limit</h2>
         </div>
@@ -70,21 +70,18 @@
             </script>
           </div>
         </div>
-
+        
         <div class="chooseSeat scheduleSection">
           <h2 class="scheduleTitle fontWhite fontMontserrat">Seats</h2>
           <div class="seatContainer">
             <div class="addSeat">
-              <a><i class="material-icons operation">remove</i></a>
-              <div class="seats">
-                <i class="material-icons seatIcon">weekend</i>
-                <i class="material-icons seatIcon">weekend</i>
-                <i class="material-icons seatIcon">weekend</i>
+              <a @click="removeSeat"><i class="material-icons operation">remove</i></a>
+              <div class="seats" ref="seats">
               </div>
-              <a><i class="material-icons operation">add</i></a>
+              <a @click="addSeat"><i class="material-icons operation">add</i></a>
             </div>
           </div>
-          <h5 class="ticketPrice fontMontserrat fontLightGray">Total: 42,00 &euro;</h5>
+          <h5 class="ticketPrice fontMontserrat fontLightGray">Total: <span ref="totalSeatPrice">{{ totalSeatPrice }} &euro;</span></h5>
         </div>
       </div>
 
