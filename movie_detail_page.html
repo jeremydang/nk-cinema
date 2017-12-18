@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/choose_schedule.css">
+  <link rel="stylesheet" href="css/movie_detail.css">
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+<div id="movieDetail" class="bookingPage">
+    <div class="backgroundPosterImg fullDivImg"></div>
+    <div class="header">
+      <h2 class="fontWhite fontSpartan">NK.</h2>
+      <h2 class="fontWhite fontSpartan">Menu</h2>
+    </div>
+    <div class="movieDetailContainer">
+      <div class="posterContainer">
+
+      </div>
+      <div class="detailContainer">
+        <div class="wrapper">
+          <div class="movieTitle">
+            <h1 class="fontWhite fontSpartan">Blade Runner 2049</h1>
+          </div>
+
+          <div class="movieDescription">
+            <h2 class="fontWhite fontMontserrat">Action, Sci-fi | 1h 20min | R Limit</h2>
+            <div class="movieScore fontWhite">
+              <button>IMDb</button>
+              <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">8.4/</span> 10<span>
+            </div>
+          </div>
+
+          <div class="movieDetail-1">
+            <div class="movieDetailGroup releaseDate">
+              <h3 class="fontLightGray fontMontserrat">Premiere</h3>
+              <h2 class="fontWhite fontMontserrat">6 Octorber, 2017</h2>
+            </div>
+            <div class="movieDetailGroup director">
+              <h3 class="fontLightGray fontMontserrat">Director</h3>
+              <h2 class="fontWhite fontMontserrat">Denis Villeneuve</h2>
+            </div>
+          </div>
+
+          <div class="movieDetail-2">
+            <div class="movieDetailGroup starring">
+              <h3 class="fontLightGray fontMontserrat">Starring</h3>
+              <h2 class="fontWhite fontMontserrat">Harrison Ford, Ryan Gosling, Ana de Armas</h2>
+            </div>
+          </div>
+
+          <div class="movieDetail-3">
+            <div class="movieDetailGroup storyLine">
+              <h3 class="fontLightGray fontMontserrat">Story line</h3>
+              <h2 class="fontWhite fontMontserrat">Officer K (Ryan Gosling), a new blade runner for the Los Angeles Police Department, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. His discovery leads him on a quest to find Rick Deckard (Harrison Ford), a former blade runner who's been missing for 30 years</h2>
+            </div>
+          </div>
+
+          <button class="btn fontMontserrat fontWhite"
+           ref="btn">
+            <span ref="btnText">Book now</span>
+           </button>
+        </div>
+      </div>
+    </div>  
+</div>
+<script src="libs/vue.min.js"></script>
+<script src="libs/TweenMax.min.js"></script>
+<script src="js/movie_detail.js"></script>
+</body>
+</html>
