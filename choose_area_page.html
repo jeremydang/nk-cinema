@@ -26,64 +26,166 @@
   </div>
   <div class="chooseAreaContainer">
     <div class="theaterInfoContainer fontMontserrat fontWhite">
-      <div class="theaterInfo fontLightGray">
-        <h2 class="fontPurple">Northkino Plaza (Oulu)</h2>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Rovaniemi'" ref="Rovaniemi">
+        <h2 class="fontPurple">Northkino Fantasy (Rovaniemi)</h2>
         <p>
-          Northkino Plaza, which has been offered for Oulu film experiences, is located in the heart of the city, a stone's throw from the pedestrian street Rotuaari. The main entrance to the Plaza and the Scandic Hotel directly leads to ticket sales and delicatessen. Tickets and movie trailers are sold at the same desk.
+          The new Northkino Fantasy, opened in April 2017, is the first full-scale cinema center in Southern Europe,
+          with
+          seven top halls featuring cutting-edge laser projectors. At the same time Apple also opened the second Scape
+          Premium platform in Finland , featuring the Barco flagship laser projector, the world's leading Dolby Atmos
+          sound system, and the luxurious Italian benches.
         </p>
-        <p><span class="fontWhite">Opening hours:</span> 12:00AM - 11PM from Monday to Sunday. </p>
-        <p><span class="fontWhite">Tickets price:</span> </p>
+        <p><span class="fontWhite">Opening hours:</span> 9:00AM - 8:00PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
         <p>
           <i class="fa fa-angle-right"></i>
           <span class="fontPurple">Classic </span>:
-          10,00 € -   11,50 € for 2D movies, 11,00 € -  12,50 € for 3D movies.
+          9,00 € - 10,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
         </p>
         <p>
           <i class="fa fa-angle-right"></i>
           <span class="fontPurple">Normal </span>:
-          12,00 € -   13,50 € for 2D movies, 13,00 € -  14,50 € for 3D movies.
+          11,50 € - 12,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
         </p>
         <p>
           <i class="fa fa-angle-right"></i>
           <span class="fontPurple">Special </span>:
-          12,50 € -   14,00 € for 2D movies, 13,50 € -  15,00 € for 3D movies.
+          12,00 € - 14,50 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
         </p>
         <button class="btn fontMontserrat fontWhite" ref="btn">
           <span ref="btnText">Choose</span>
-         </button>
+        </button>
       </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Oulu'" ref="Oulu">
+        <h2 class="fontPurple">Northkino Plaza (Oulu)</h2>
+        <p>
+          Northkino Plaza, which has been offered for Oulu film experiences, is located in the heart of the city, a
+          stone's throw from the pedestrian street Rotuaari. The main entrance to the Plaza and the Scandic Hotel
+          directly leads to ticket sales and delicatessen. Tickets and movie trailers are sold at the same desk.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 12:00AM - 11:00PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          10,00 € - 11,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          12,00 € - 13,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          12,50 € - 14,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Tampere'" ref="Tampere">
+        <h2 class="fontPurple">Northkino Koskikeskus (Tampere)</h2>
+        <p>
+          Koskikeskus is Tampere's most versatile shopping center in the city center. At the bottom floor of the
+          Koskikeskus, you will find a cozy Finnkino Cine Atlas movie theater favored by families especially. There is
+          also a popular café and an ice cream parlor in the movie theater.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 12:30AM - 10:00PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          11,00 € - 12,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          13,00 € - 14,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          13,50 € - 15,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Turku'" ref="Turku">
+        <h2 class="fontPurple">Northkino Kinopalatsi (Turku)</h2>
+        <p>
+          The modern cinema center was inaugurated in Turku in the spring of 2001. Kinopalats have been invested in the
+          9-storied view of relaxation; all the halls are steeply staggered and the foot space between the rows is
+          optimal. The presentation technology is top-notch: all the halls have digital sound and big screen.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 11:00AM - 12PM from Monday to Saturday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          12,00 € - 13,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          14,00 € - 15,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          14,50 € - 16,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Helsinki'" ref="Helsinki">
+        <h2 class="fontPurple">Northkino Kinopalatsi (Helsinki)</h2>
+        <p>
+          Helsinki Kinopalatsi was opening the first Finnish multiplex movie theater in Finland in autumn 1998. 10
+          high-class auditoriums, featuring all digital audio and contemporary seating, are the most demanding of
+          filmmakers. Kinopalatsi is located in the Fennia Quarter, which also includes a wealth of services from fast
+          food and sushi to nightclubs and bars.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 11:30AM - 11:30PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          13,00 € - 14,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          15,00 € - 16,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          15,50 € - 17,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
     </div>
     <div class="mapContainer">
-      <div class="mapPin mapPinRovaniemi">
-        <div class="mapPinOuter">
-          <div class="mapPinInner"></div>
+      <template v-for="cinema in cinemas">
+        <div class="mapPin" :class="['mapPin' + cinema]" @click="setActiveCinema(cinema)">
+          <div class="mapPinOuter"
+               :style="{'border-color': cinema === currentCinemaMapPin ? 'transparent' : '#C4A8FF'}">
+            <div class="mapPinInner" :class="{mapPinRipple: cinema === currentCinemaMapPin}"></div>
+          </div>
+          <h2 class="fontMontserrat fontWhite">{{ cinema }}</h2>
         </div>
-        <h2 class="fontMontserrat fontWhite">Rovaniemi</h2>
-      </div>
-      <div class="mapPin mapPinOulu">
-        <div class="mapPinOuter">
-          <div class="mapPinInner"></div>
-        </div>
-        <h2 class="fontMontserrat fontWhite">Oulu</h2>
-      </div>
-      <div class="mapPin mapPinTampere">
-        <div class="mapPinOuter">
-          <div class="mapPinInner"></div>
-        </div>
-        <h2 class="fontMontserrat fontWhite">Tampere</h2>
-      </div>
-      <div class="mapPin mapPinHelsinki">
-        <div class="mapPinOuter">
-          <div class="mapPinInner"></div>
-        </div>
-        <h2 class="fontMontserrat fontWhite">Helsinki</h2>
-      </div>
-      <div class="mapPin mapPinTurku">
-        <div class="mapPinOuter">
-          <div class="mapPinInner"></div>
-        </div>
-        <h2 class="fontMontserrat fontWhite">Turku</h2>
-      </div>
+      </template>
     </div>
   </div>
   <div class="footer">
@@ -96,7 +198,9 @@
       Click on map to choose theater
     </h2>
   </div>
-
 </div>
+<script src="libs/vue.min.js"></script>
+<script src="libs/TweenMax.min.js"></script>
+<script src="js/choose_area_page.js"></script>
 </body>
 </html>

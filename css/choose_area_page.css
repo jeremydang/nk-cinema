@@ -1,10 +1,10 @@
 #chooseAreaPage {
-  background: linear-gradient(180deg, 
-    rgba(9, 0, 18, 1) 0%, rgba(23, 10, 44, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(180deg,
+  rgba(9, 0, 18, 1) 0%, rgba(23, 10, 44, 1) 50%, rgba(0, 0, 0, 0) 100%);
   height: 100%;
 }
 
-#chooseAreaPage .chooseAreaContainer{
+#chooseAreaPage .chooseAreaContainer {
   display: flex;
 }
 
@@ -14,6 +14,7 @@
 
 #chooseAreaPage .theaterInfo {
   padding: 4em 0 0 12em;
+  position: relative;
 }
 
 #chooseAreaPage .theaterInfo h2 {
@@ -35,6 +36,7 @@
   display: flex;
   align-items: center;
   position: absolute;
+  cursor: pointer;
 }
 
 #chooseAreaPage .mapPin h2 {
@@ -85,7 +87,7 @@
   left: 270px;
 }
 
-#chooseAreaPage .btn{
+#chooseAreaPage .btn {
   padding: 0.5em 2.4em;
   margin-top: 1em;
 }
@@ -99,15 +101,50 @@
   font-size: 1em;
   font-weight: 300;
   text-align: center;
+  margin-top: 1.5em;
 }
 
-#chooseAreaPage .mapInstruction i, .backBtn i{
+#chooseAreaPage .mapInstruction i, .backBtn i {
   margin-right: 0.5em;
 }
 
-.backBtn{
+.backBtn {
   font-size: 1.2em;
   flex: 1;
   text-align: center;
-  margin: 0.5em 0 0 -6em;
+  margin: 1.2em 0 0 -6em;
+}
+
+.mapPinRipple {
+  animation: ripple 0.7s linear infinite;
+}
+
+.mapPinOuter:hover {
+  animation: blowUp 1s linear;
+}
+
+@keyframes blowUp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(196, 168, 255, 0.1),
+    0 0 0 0.5em rgba(196, 168, 255, 0.3)
+  }
+  100% {
+    box-shadow: 0 0 0 1em rgba(196, 168, 255, 0),
+    0 0 0 1em rgba(196, 168, 255, 0)
+  }
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(196, 168, 255, 0.3),
+    0 0 0 0.5em rgba(196, 168, 255, 0.3),
+    0 0 0 1.25em rgba(196, 168, 255, 0.3),
+    0 0 0 2.25em rgba(196, 168, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0.25em rgba(196, 168, 255, 0.3),
+    0 0 0 1.25em rgba(196, 168, 255, 0.3),
+    0 0 0 2.25em rgba(196, 168, 255, 0.3),
+    0 0 0 3.75em rgba(196, 168, 255, 0);
+  }
 }
