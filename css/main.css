@@ -2,10 +2,10 @@
 /* GLOBAL */
 @font-face {
     font-family: 'League Spartan';
-    src: url('assets/fonts/LeagueSpartan-Bold.eot');
-    src: url('assets/fonts/LeagueSpartan-Bold.eot?#iefix') format('embedded-opentype'),
-        url('assets/fonts/LeagueSpartan-Bold.woff') format('woff'),
-        url('assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    src: url('/assets/fonts/LeagueSpartan-Bold.eot');
+    src: url('/assets/fonts/LeagueSpartan-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/LeagueSpartan-Bold.woff') format('woff'),
+        url('/assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
