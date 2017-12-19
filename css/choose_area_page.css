@@ -148,3 +148,13 @@
     0 0 0 3.75em rgba(196, 168, 255, 0);
   }
 }
+
+#chooseAreaPage .backgroundPosterImg {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -999;
+}
