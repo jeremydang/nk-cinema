@@ -1,13 +1,23 @@
-const baseWeekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const baseWeekDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const baseMonth = [ "January", "February", "March", "April",
-              "May", "June", "July", "August",
-              "September", "October", "November", "December" ] ;
+const baseMonth = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
 
-const movieType = ["2D", "3D", "2D", "2D", "3D"];
+const movieType = ['2D', '3D', '2D', '2D', '3D'];
 
-const time = ["12:30", "15:00", "16:30", "18:30", "20:00"];
-
+const time = ['12:30', '15:00', '16:30', '18:30', '20:00'];
 
 let weekDay = [];
 
@@ -28,7 +38,7 @@ function createSeat(seatId) {
 const chooseSchedule = new Vue({
   el: '#chooseSchedule',
   data: {
-    weekDay : weekDay,
+    weekDay: weekDay,
     date: date,
     month: baseMonth[new Date().getMonth()],
     movieType: movieType,
@@ -38,30 +48,43 @@ const chooseSchedule = new Vue({
     dx: 0,
     dy: 0,
     totalSeatPrice: 14,
-    seatsId: seatsId
+    seatsId: seatsId,
+    showChooseSchedule: false,
+    currentBackgroundPoster: nowShowingMovies[0].posterUrlPath,
+    currentMovieTitleLine1: nowShowingMovies[0].title[0],
+    currentMovieTitleLine2: nowShowingMovies[0].title[1],
+    currentMovieReleaseDate: nowShowingMovies[0].releaseDate,
+    currentMovieCategory: nowShowingMovies[0].category,
+    currentMovieImdbScore: nowShowingMovies[0].imdbScore,
+    currentMovieRunningTime: nowShowingMovies[0].runningTime,
+    currentMovieDetailPoster: nowShowingMovies[0].detailUrlPath,
+    currentMovieUrlPath: nowShowingMovies[0].videoUrlPath,
+    currentCinemaDescription: 'Oulu'
   },
-  mounted: function (){
-
+  mounted: function() {
     this.$refs.seats.appendChild(createSeat(this.seatsId[0]));
 
     let d = new Date();
-    for(index; index < baseWeekDay.length; index++){
-      index === 0? d.setDate(d.getDate()) : d.setDate(d.getDate() + 1);
+    for (index; index < baseWeekDay.length; index++) {
+      index === 0 ? d.setDate(d.getDate()) : d.setDate(d.getDate() + 1);
       this.date.push(d.getDate());
-      this.weekDay.push(index === 0 ? "Today" : baseWeekDay[d.getDay()] );
+      this.weekDay.push(index === 0 ? 'Today' : baseWeekDay[d.getDay()]);
     }
     this.setActiveDate(0);
     this.setActiveTime(0);
   },
   methods: {
-    setActiveDate: function (itemIndex){
+    mount: function() {
+      this.showChooseSchedule = true;
+    },
+    setActiveDate: function(itemIndex) {
       this.activeDate = itemIndex;
     },
-    setActiveTime: function (itemIndex){
+    setActiveTime: function(itemIndex) {
       this.activeTime = itemIndex;
     },
 
-    onMouseMove: function (e) {
+    onMouseMove: function(e) {
       const { btn } = this.$refs;
       const { btnText } = this.$refs;
 
@@ -69,46 +92,97 @@ const chooseSchedule = new Vue({
 
       const x = e.clientX - boundingClientRect.left;
       const y = e.clientY - boundingClientRect.top;
-      const xc = boundingClientRect.width/2;
-      const yc = boundingClientRect.height/2;
-      
+      const xc = boundingClientRect.width / 2;
+      const yc = boundingClientRect.height / 2;
+
       dx = x - xc;
       dy = y - yc;
 
-      TweenMax.to(btn, 0.4, {rotationX:dy/-1, rotationY:dx/10, ease: Sine.easeOut, 
-        transformPerspective:900, transformOrigin:"center", transformStyle: "preserve-3d"});
-
+      TweenMax.to(btn, 0.4, {
+        rotationX: dy / -1,
+        rotationY: dx / 10,
+        ease: Sine.easeOut,
+        transformPerspective: 900,
+        transformOrigin: 'center',
+        transformStyle: 'preserve-3d'
+      });
     },
-    onMouseLeave: function(e){
+    onMouseLeave: function(e) {
       const { btn } = this.$refs;
       const { btnText } = this.$refs;
-      TweenMax.to([btn,btnText], 0.4, {rotationX:0, rotationY:0, ease: Sine.easeOut});
+      TweenMax.to([btn, btnText], 0.4, {
+        rotationX: 0,
+        rotationY: 0,
+        ease: Sine.easeOut
+      });
     },
-    onMouseDown: function(e){
+    onMouseDown: function(e) {
       const { btn } = this.$refs;
       const tl = new TimelineMax();
-      tl.to(btn, 0.2, {z:-65, ease: Power4.easeOut})
-      .to(btn, 0.2, {z:0, ease: Power4.easeOut}, '+=0.1') // temporary alternative to mouseup
+      tl
+        .to(btn, 0.2, { z: -65, ease: Power4.easeOut })
+        .to(btn, 0.2, { z: 0, ease: Power4.easeOut }, '+=0.1'); // temporary alternative to mouseup
     },
-    addSeat: function (e) {
+    addSeat: function(e) {
       const newlyAddedSeatId = 'seat' + this.seatsId.length;
       this.seatsId.push(newlyAddedSeatId);
       const seat = createSeat(newlyAddedSeatId);
       this.$refs.seats.appendChild(seat);
       const newlyAddedSeatElement = document.getElementById(newlyAddedSeatId);
-      TweenMax.fromTo(newlyAddedSeatElement, 0.5, { opacity: 0 }, { opacity: 1 });
+      TweenMax.fromTo(
+        newlyAddedSeatElement,
+        0.5,
+        { opacity: 0 },
+        { opacity: 1 }
+      );
     },
-    removeSeat: function (e) {
+    removeSeat: function(e) {
       const lastSeatId = seatsId[seatsId.length - 1];
       const lastSeatElement = document.getElementById(lastSeatId);
       this.seatsId.pop();
-      TweenMax.fromTo(lastSeatElement, 0.2, { opacity: 1 }, { opacity: 0, onComplete: () => this.$refs.seats.removeChild(lastSeatElement) });
+      TweenMax.fromTo(
+        lastSeatElement,
+        0.2,
+        { opacity: 1 },
+        {
+          opacity: 0,
+          onComplete: () => this.$refs.seats.removeChild(lastSeatElement)
+        }
+      );
+    },
+    updateState: function({
+      currentBackgroundPoster,
+      currentMovieTitleLine1,
+      currentMovieTitleLine2,
+      currentMovieReleaseDate,
+      currentMovieCategory,
+      currentMovieImdbScore,
+      currentMovieRunningTime,
+      currentMovieDetailPoster,
+      currentMovieUrlPath,
+      currentCinemaDescription
+    }) {
+      this.currentBackgroundPoster = currentBackgroundPoster;
+      this.currentMovieTitleLine1 = currentMovieTitleLine1;
+      this.currentMovieTitleLine2 = currentMovieTitleLine2;
+      this.currentMovieReleaseDate = currentMovieReleaseDate;
+      this.currentMovieCategory = currentMovieCategory;
+      this.currentMovieImdbScore = currentMovieImdbScore;
+      this.currentMovieRunningTime = currentMovieRunningTime;
+      this.currentMovieDetailPoster = currentMovieDetailPoster;
+      this.currentMovieUrlPath = currentMovieUrlPath;
+      this.currentCinemaDescription = currentCinemaDescription;
     }
   },
   watch: {
-    seatsId: function () {
+    seatsId: function() {
       this.totalSeatPrice = 14 * this.seatsId.length;
-      TweenMax.fromTo(this.$refs.totalSeatPrice, 0.5, { opacity: 0 }, { opacity: 1 });
+      TweenMax.fromTo(
+        this.$refs.totalSeatPrice,
+        0.5,
+        { opacity: 0 },
+        { opacity: 1 }
+      );
     }
   }
 });

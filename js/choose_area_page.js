@@ -37,6 +37,11 @@ const chooseAreaPage = new Vue({
           { bottom: 0, opacity: 1 }
         );
     },
+    onClickChooseArea: function () {
+      this.showChooseArea = false;
+      chooseSchedule.updateState(this);
+      chooseSchedule.mount();
+    },
     mount: function() {
       this.showChooseArea = true;
     },

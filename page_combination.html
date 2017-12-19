@@ -193,7 +193,7 @@
           <span class="fontPurple">Special </span>:
           12,00 € - 14,50 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
         </p>
-        <button class="btn fontMontserrat fontWhite" ref="btn">
+        <button class="btn fontMontserrat fontWhite" ref="btn" @click="onClickChooseArea">
           <span ref="btnText">Choose</span>
         </button>
       </div>
@@ -222,7 +222,7 @@
           <span class="fontPurple">Special </span>:
           12,50 € - 14,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
         </p>
-        <button class="btn fontMontserrat fontWhite" ref="btn">
+        <button class="btn fontMontserrat fontWhite" ref="btn" @click="onClickChooseArea">
           <span ref="btnText">Choose</span>
         </button>
       </div>
@@ -251,7 +251,7 @@
           <span class="fontPurple">Special </span>:
           13,50 € - 15,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
         </p>
-        <button class="btn fontMontserrat fontWhite" ref="btn">
+        <button class="btn fontMontserrat fontWhite" ref="btn" @click="onClickChooseArea">
           <span ref="btnText">Choose</span>
         </button>
       </div>
@@ -280,7 +280,7 @@
           <span class="fontPurple">Special </span>:
           14,50 € - 16,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
         </p>
-        <button class="btn fontMontserrat fontWhite" ref="btn">
+        <button class="btn fontMontserrat fontWhite" ref="btn" @click="onClickChooseArea">
           <span ref="btnText">Choose</span>
         </button>
       </div>
@@ -310,7 +310,7 @@
           <span class="fontPurple">Special </span>:
           15,50 € - 17,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
         </p>
-        <button class="btn fontMontserrat fontWhite" ref="btn">
+        <button class="btn fontMontserrat fontWhite" ref="btn" @click="onClickChooseArea">
           <span ref="btnText">Choose</span>
         </button>
       </div>
@@ -340,11 +340,92 @@
   </div>
 </div>
 
+<div id="chooseSchedule" class="bookingPage" v-show="showChooseSchedule">
+  <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan logo">NK.</h2>
+    <h2 class="fontWhite fontMontserrat stepTitle"><b>01.</b> Choose session times</h2>
+    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+  </div>
+  <div class="bookingContainer">
+    <div class="posterContainer" :style="{backgroundImage: currentMovieDetailPoster}">
+      <a class="playBtn">
+        <i class="material-icons operation play">play_arrow</i></a>
+    </div>
+    <div class="scheduleContainer">
+
+      <div class="movieInfoContainer">
+        <div class="movieInfo">
+          <h2 class="fontWhite fontMontserrat">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h2>
+          <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
+        </div>
+        <div class="movieScore fontWhite">
+          <button>IMDb</button>
+          <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+        </div>
+      </div>
+
+      <div class="scheduleInfoContainer">
+        <div class="chooseDate scheduleSection">
+          <h2 class="scheduleTitle fontWhite fontMontserrat">{{ month }}</h2>
+          <div class="dateContainer">
+            <script type="text/javascript">
+              for(let i=0; i<7; i++){
+                document.write(
+                  `<div class="date fontWhite fontMontserrat">
+                      <p class="fontLightGray weekday">{{ weekDay[`+ i + `] }}</p>
+                      <a @click="setActiveDate(`+ i + `)" :class="{active:`+ i + ` === activeDate}">
+                      {{ date[`+ i + `] }}</a>
+                   </div>`)}
+            </script>
+          </div>
+        </div>
+
+        <div class="chooseTime scheduleSection">
+          <h2 class="scheduleTitle fontWhite fontMontserrat">NorthKino {{ currentCinemaDescription }}</h2>
+          <div class="timeContainer">
+            <script type="text/javascript">
+              for(let i=0; i<5; i++){
+                document.write(
+                  `<div class="time fontWhite fontMontserrat">
+                      <p class="fontLightGray movieType">{{ movieType[`+ i + `] }}</p>
+                      <a @click="setActiveTime(`+ i + `)" :class="{active:`+ i + ` === activeTime}">
+                      {{ time[`+ i + `] }}</a>
+                   </div>`)}
+            </script>
+          </div>
+        </div>
+
+        <div class="chooseSeat scheduleSection">
+          <h2 class="scheduleTitle fontWhite fontMontserrat">Seats</h2>
+          <div class="seatContainer">
+            <div class="addSeat">
+              <a @click="removeSeat"><i class="material-icons operation">remove</i></a>
+              <div class="seats" ref="seats">
+              </div>
+              <a @click="addSeat"><i class="material-icons operation">add</i></a>
+            </div>
+          </div>
+          <h5 class="ticketPrice fontMontserrat fontLightGray">Total: <span ref="totalSeatPrice">{{ totalSeatPrice }} &euro;</span></h5>
+        </div>
+      </div>
+
+      <button class="btn fontMontserrat fontWhite"
+              @mousemove="onMouseMove"  @mouseleave="onMouseLeave"
+              @mousedown="onMouseDown" ref="btn">
+        <span ref="btnText">Choose seats</span>
+      </button>
+
+    </div>
+  </div>
+</div>
+
 <script src="libs/TweenMax.min.js"></script>
 <script src="libs/vue.min.js"></script>
 <script src="js/browser_movies_page.js"></script>
 <script src="js/movie_detail.js"></script>
 <script src="js/movie_trailer_page.js"></script>
 <script src="js/choose_area_page.js"></script>
+<script src="js/choose_schedule_page.js"></script>
 </body>
 </html>
