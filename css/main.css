@@ -84,6 +84,15 @@ a{
   position: absolute;
 }
 
+.clearfix{
+  clear: both;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* ---------------------------------------------------------------------------------------------------- */
 /* HOME PAGE */
 

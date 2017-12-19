@@ -1,18 +1,34 @@
+#chooseAreaPage {
+  background: linear-gradient(180deg, 
+    rgba(9, 0, 18, 1) 0%, rgba(23, 10, 44, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  height: 100%;
+}
+
+#chooseAreaPage .chooseAreaContainer{
+  display: flex;
+}
+
 #chooseAreaPage .theaterInfoContainer {
   flex: 1;
-  font-weight: 300;
+}
+
+#chooseAreaPage .theaterInfo {
+  padding: 4em 0 0 14em;
+}
+
+#chooseAreaPage .theaterInfo h2 {
+  font-weight: 600;
+  font-size: 1.2em;
 }
 
 #chooseAreaPage .mapContainer {
   flex: 1;
   flex-direction: column;
-  align-items: center;
-}
-
-#chooseAreaPage .mapContainer h2 {
-  font-size: 1em;
-  font-weight: 300;
-  padding-left: 56px;
+  height: 80vh;
+  margin-top: -1em;
+  position: relative;
+  background: url('../assets/images/map-line-thick-12.png') no-repeat top center;
+  background-size: 50%;
 }
 
 #chooseAreaPage .mapPin {
@@ -22,16 +38,15 @@
 }
 
 #chooseAreaPage .mapPin h2 {
-  font-size: 18px;
+  font-size: 1.1em;
   font-weight: 500;
-  padding-left: 16px;
+  margin-left: 0.6em;
 }
 
 #chooseAreaPage .mapPinOuter {
-  width: 19px;
-  height: 19px;
-  border-radius: 19px;
-  background-color: #531EC6;
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
   border: 2px solid #C4A8FF;
   display: flex;
   justify-content: center;
@@ -39,33 +54,60 @@
 }
 
 #chooseAreaPage .mapPinInner {
-  width: 13px;
-  height: 13px;
-  border-radius: 13px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50px;
   background-color: #C4A8FF;
 }
 
 #chooseAreaPage .mapPinRovaniemi {
-  top: 280px;
-  left: 939px;
+  top: 140px;
+  left: 340px;
 }
 
 #chooseAreaPage .mapPinOulu {
-  top: 360px;
-  left: 950px;
+  top: 225px;
+  left: 360px;
 }
 
 #chooseAreaPage .mapPinTampere {
-  top: 660px;
-  left: 892px;
-}
-
-#chooseAreaPage .mapPinTurku {
-  top: 730px;
-  left: 844px;
+  top: 490px;
+  left: 300px;
 }
 
 #chooseAreaPage .mapPinHelsinki {
-  top: 730px;
-  left: 1040px;
+  top: 555px;
+  left: 410px;
+}
+
+#chooseAreaPage .mapPinTurku {
+  top: 555px;
+  left: 270px;
+}
+
+#chooseAreaPage .btn{
+  padding: 0.5em 2.4em;
+  margin-top: 1em;
+}
+
+#chooseAreaPage .footer {
+  display: flex;
+}
+
+#chooseAreaPage .footer .mapInstruction {
+  flex: 1;
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+}
+
+#chooseAreaPage .mapInstruction i, .backBtn i{
+  margin-right: 0.5em;
+}
+
+.backBtn{
+  font-size: 1.2em;
+  flex: 1;
+  text-align: center;
+  margin: 0.5em 0 0 -4.5em;
 }
