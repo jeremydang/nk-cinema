@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="css/movie_detail.css">
   <link rel="stylesheet" href="css/movie_trailer_page.css">
   <link rel="stylesheet" href="css/choose_area_page.css">
+  <link rel="stylesheet" href="css/choose_seat_page.css">
+  <link rel="stylesheet" href="css/checkout_page.css">
   <title>Document</title>
   <style>
     body {
@@ -412,10 +414,228 @@
 
       <button class="btn fontMontserrat fontWhite"
               @mousemove="onMouseMove"  @mouseleave="onMouseLeave"
-              @mousedown="onMouseDown" ref="btn">
+              @mousedown="onMouseDown" ref="btn" @click="onClickChooseSeats">
         <span ref="btnText">Choose seats</span>
       </button>
 
+    </div>
+  </div>
+</div>
+
+<div id="chooseSeatPage" class="bookingPage" v-show="showChooseSeats">
+  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan logo">NK.</h2>
+    <h2 class="fontWhite fontMontserrat stepTitle"><b>03.</b> Choose seats</h2>
+    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+  </div>
+  <div class="bookingContainer">
+    <div class="movieInfoContainer">
+      <div class="movieInfo">
+        <h2 class="fontWhite fontMontserrat">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h2>
+        <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
+      </div>
+      <div class="movieScore fontWhite">
+        <button>IMDb</button>
+        <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+      </div>
+    </div>
+    <div class="screenContainer">
+      <img src="/assets/images/cinema_screen.png" height="233" width="533" class="screenImg">
+    </div>
+    <div class="seatsContainer">
+      <div class="leftNumber">
+        <h2 class="fontLightGray fontMontserrat">F</h2>
+        <h2 class="fontLightGray fontMontserrat">E</h2>
+        <h2 class="fontLightGray fontMontserrat">D</h2>
+        <h2 class="fontLightGray fontMontserrat">C</h2>
+        <h2 class="fontLightGray fontMontserrat">B</h2>
+        <h2 class="fontLightGray fontMontserrat">A</h2>
+      </div>
+      <div class="leftSeats">
+        <div v-for="seatRow in seatRows">
+          <i class="material-icons seatIcon" v-for="seatNumber in seatNumbers[0]"
+             :style="{color: seatProperties[seatRow][seatNumber].color}"
+             @click="onClickSelectSeat(seatRow, seatNumber)"
+             :ref="seatRow + seatNumber">weekend</i>
+        </div>
+      </div>
+
+      <div class="middleSeats">
+        <div v-for="seatRow in seatRows">
+          <i class="material-icons seatIcon" v-for="seatNumber in seatNumbers[1]"
+             :style="{color: seatProperties[seatRow][seatNumber].color}"
+             @click="onClickSelectSeat(seatRow, seatNumber)"
+             :ref="seatRow + seatNumber">weekend</i>
+        </div>
+      </div>
+
+      <div class="rightSeats">
+        <div v-for="seatRow in seatRows">
+          <i class="material-icons seatIcon" v-for="seatNumber in seatNumbers[2]"
+             :style="{color: seatProperties[seatRow][seatNumber].color}"
+             @click="onClickSelectSeat(seatRow, seatNumber)"
+             :ref="seatRow + seatNumber">weekend</i>
+        </div>
+      </div>
+
+      <div class="rightNumber">
+        <h2 class="fontLightGray fontMontserrat">F</h2>
+        <h2 class="fontLightGray fontMontserrat">E</h2>
+        <h2 class="fontLightGray fontMontserrat">D</h2>
+        <h2 class="fontLightGray fontMontserrat">C</h2>
+        <h2 class="fontLightGray fontMontserrat">B</h2>
+        <h2 class="fontLightGray fontMontserrat">A</h2>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="bookingInfo">
+      <div class="seatInfo">
+        <i class="material-icons seatIcon" style="color: #531EC6">weekend</i>
+        <h2 class="fontWhite fontMontserrat">Available</h2>
+        <i class="material-icons seatIcon" style="color: #474747">weekend</i>
+        <h2 class="fontWhite fontMontserrat">Taken</h2>
+        <i class="material-icons seatIcon" style="color: #FF1F2F">weekend</i>
+        <h2 class="fontWhite fontMontserrat">Selected</h2>
+      </div>
+      <div class="seatStatus">
+        <h2 class="fontWhite fontMontserrat">
+          <span class="fontLightGray">Seat:</span>
+          <span style="color: #C4A8FF" ref="selectedSeats">{{ selectedSeats.join(', ') }}</span>
+        </h2>
+        <h2 class="fontWhite fontMontserrat">
+          <span class="fontLightGray">Total:</span>
+          <span style="color: #C4A8FF">{{ totalSeatPrice }} &euro;</span>
+        </h2>
+        <button class="nextBtn" @click="onClickCheckout"><i class="material-icons arrowIcon">arrow_forward</i></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="checkoutPage" class="bookingPage" v-show="showCheckout">
+  <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan logo">NK.</h2>
+    <h2 class="fontWhite fontMontserrat stepTitle"><b>04.</b> Checkout</h2>
+    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+  </div>
+  <div class="bookingContainer">
+    <div class="leftPanel">
+      <div class="movieInfoContainer">
+        <div class="movieInfo">
+          <h2 class="fontWhite fontMontserrat">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h2>
+          <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
+        </div>
+        <div class="movieScore fontWhite">
+          <button>IMDb</button>
+          <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+        </div>
+      </div>
+      <div class="beverageChooserContainer">
+        <h2 class="fontMontserrat fontWhite">Enjoy your movies with some snacks</h2>
+        <div class="chooseFoodContainer">
+          <div class="popCornContainer" ref="popCorn" @click="onClickPopcorn">
+            <img src="assets/images/popcorn-icon.png"
+                 alt="Popcorn" height="100" width="100" ref="popCornImg">
+            <h2 class="fontWhite fontMontserrat">6,50 &euro;</h2>
+          </div>
+          <div class="colaContainer" ref="cola" @click="onClickCola">
+            <img src="assets/images/drink-icon.png"
+                 alt="Cola" height="100" width="100" ref="colaImg">
+            <h2 class="fontWhite fontMontserrat">4,50 &euro;</h2>
+          </div>
+          <div class="buttonsContainer">
+            <div class="btnPlus effectBtn" :class="{'effectBtn-click': plusBtnClick}"
+                 @click="onClickAdd">
+              <i class="fa fa-plus fontWhite effectBtnIcon"></i>
+            </div>
+            <div class="btnMinus effectBtn" :class="{'effectBtn-click': minusBtnClick}"
+                 @click="onClickReduce">
+              <i class="fa fa-minus fontWhite effectBtnIcon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkoutDetailContainer fontWhite fontMontserrat">
+        <div class="placeDetail">
+          <div>
+            <h2 class="fontLightGray">Cinema</h2>
+            <h2 class="fontPurple">Northkino {{ currentCinemaDescription }}</h2>
+          </div>
+          <div style="margin-left: auto;">
+            <h2 class="fontLightGray">Date</h2>
+            <h2 class="fontPurple">{{ selectedDate }} {{ selectedMonth.substring(0, 3) }}, {{ selectedTime }}</h2>
+          </div>
+          <div>
+            <h2 class="fontLightGray">Seats</h2>
+            <h2 class="fontPurple">{{ selectedSeats.join(', ') }}</h2>
+          </div>
+        </div>
+        <div class="ticketPrices">
+          <h2 class="fontLightGray">{{ seatsId.length }} ticket</h2>
+          <h2>{{ totalSeatPrice }} &euro;</h2>
+        </div>
+        <div class="popCornPrices">
+          <h2 class="fontLightGray">{{ popCorn.count }} Popcorn</h2>
+          <h2>+{{ popCorn.totalPrice.toFixed(2) }} &euro;</h2>
+        </div>
+        <div class="drinkPrices">
+          <h2 class="fontLightGray">{{ cola.count }} Drink</h2>
+          <h2>+{{ cola.totalPrice.toFixed(2) }} &euro;</h2>
+        </div>
+        <div class="totalPrices">
+          <h2 class="fontPurple">Total</h2>
+          <h2>{{ totalPrice.toFixed(2) }} &euro;</h2>
+        </div>
+        <div class="buttonContainer">
+          <button class="btn fontMontserrat fontWhite">
+            <span ref="btnText">Confirm and pay</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="rightPanel fontMontserrat fontWhite">
+      <h2>Enter your contact details</h2>
+      <span class="input" :class="{'input--filled': clientName !== ''}">
+					<input class="inputField " type="text" id="name" v-model="clientName"/>
+					<label class="inputLabel" for="name">
+						<span class="inputLabelContent fontPurple fontMontserrat">Name</span>
+					</label>
+      </span>
+      <span class="input" :class="{'input--filled': clientEmail !== ''}">
+					<input class="inputField" type="text" id="email" v-model="clientEmail"/>
+					<label class="inputLabel" for="email">
+						<span class="inputLabelContent fontPurple fontMontserrat">Email</span>
+					</label>
+      </span>
+      <span class="input" :class="{'input--filled': clientPhoneNumber !== ''}">
+					<input class="inputField  " type="text" id="phone_number" v-model="clientPhoneNumber" />
+					<label class="inputLabel" for="phone_number">
+						<span class="inputLabelContent fontPurple fontMontserrat">Phone Number</span>
+					</label>
+      </span>
+      <h2>Add your payment method</h2>
+      <div class="visaForm">
+        <div class="visaLogoContainer">
+          <i class="fa fa-cc-visa"></i>
+        </div>
+        <div class="visaNumberContainer">
+          <input type="text" placeholder="XXXX     XXXX     XXXX     XXXX" class="fontMontserrat">
+        </div>
+        <div class="visaDateCVVContainer">
+          <div class="expiryDate">
+            <input type="text" placeholder="12" class="fontMontserrat">
+            <h2>/</h2>
+            <input type="text" placeholder="17" class="fontMontserrat">
+          </div>
+          <div class="cvvNumber">
+            <h2 class="fontMontserrat fontLightGray">CVV</h2>
+            <input type="password" placeholder="* * *" class="fontMontserrat"/>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -427,5 +647,7 @@
 <script src="js/movie_trailer_page.js"></script>
 <script src="js/choose_area_page.js"></script>
 <script src="js/choose_schedule_page.js"></script>
+<script src="js/choose_seat_page.js"></script>
+<script src="js/checkout_page.js"></script>
 </body>
 </html>

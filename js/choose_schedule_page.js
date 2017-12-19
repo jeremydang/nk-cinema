@@ -59,7 +59,9 @@ const chooseSchedule = new Vue({
     currentMovieRunningTime: nowShowingMovies[0].runningTime,
     currentMovieDetailPoster: nowShowingMovies[0].detailUrlPath,
     currentMovieUrlPath: nowShowingMovies[0].videoUrlPath,
-    currentCinemaDescription: 'Oulu'
+    currentCinemaDescription: 'Oulu',
+    selectedDate: '',
+    selectedTime: '',
   },
   mounted: function() {
     this.$refs.seats.appendChild(createSeat(this.seatsId[0]));
@@ -79,9 +81,11 @@ const chooseSchedule = new Vue({
     },
     setActiveDate: function(itemIndex) {
       this.activeDate = itemIndex;
+      this.selectedDate = this.date[itemIndex];
     },
     setActiveTime: function(itemIndex) {
       this.activeTime = itemIndex;
+      this.selectedTime = this.time[itemIndex];
     },
 
     onMouseMove: function(e) {
@@ -115,6 +119,12 @@ const chooseSchedule = new Vue({
         rotationY: 0,
         ease: Sine.easeOut
       });
+    },
+    onClickChooseSeats: function () {
+      this.showChooseSchedule = false;
+      chooseSeatPage.updateState({...this, selectedMonth: this.month});
+      chooseSeatPage.setRandomSeats();
+      chooseSeatPage.mount();
     },
     onMouseDown: function(e) {
       const { btn } = this.$refs;
@@ -160,7 +170,7 @@ const chooseSchedule = new Vue({
       currentMovieRunningTime,
       currentMovieDetailPoster,
       currentMovieUrlPath,
-      currentCinemaDescription
+      currentCinemaDescription,
     }) {
       this.currentBackgroundPoster = currentBackgroundPoster;
       this.currentMovieTitleLine1 = currentMovieTitleLine1;
