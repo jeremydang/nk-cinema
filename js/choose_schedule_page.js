@@ -236,6 +236,12 @@ const chooseSchedule = new Vue({
           {y: 0, opacity: 1, ease: Expo.easeOut }, 0.2, '-=0.3')
         .call(() => {this.onMenuShow = true})
     },
+    onClickBackChooseTheater: function () {
+      this.unmount(() => {
+        this.showChooseSchedule = false;
+        chooseAreaPage.mount();
+      });
+    },
     closeMenu: function(){
       if(this.onMenuShow){
         const { frontLayer } = this.$refs;

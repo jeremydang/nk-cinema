@@ -132,6 +132,12 @@ const chooseSeatPage = new Vue({
         .fromTo(bookingContainer, 0.5, { opacity: 1 }, { opacity: 0 }, '-=0.5')
         .call(onComplete);
     },
+    onClickBackChooseSchedule: function () {
+      this.unmount(() => {
+        this.showChooseSeats = false;
+        chooseSchedule.mount();
+      });
+    },
     updateState: function({
       currentBackgroundPoster,
       currentMovieTitleLine1,

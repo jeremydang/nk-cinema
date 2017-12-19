@@ -61,6 +61,12 @@ const checkoutPage = new Vue({
         .fromTo(bookingContainer, 0.5, { opacity: 1 }, { opacity: 0 }, '-=0.5')
         .call(onComplete);
     },
+    onClickBackChooseSeats: function () {
+      this.unmount(() => {
+        this.showCheckout = false;
+        chooseSeatPage.mount();
+      });
+    },
     onClickPopcorn: function() {
       this.selectedFood = 'Popcorn';
     },
