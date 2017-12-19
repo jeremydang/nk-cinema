@@ -216,13 +216,15 @@ const chooseSchedule = new Vue({
   },
   watch: {
     seatsId: function() {
-      this.totalSeatPrice = 14 * this.seatsId.length;
-      TweenMax.fromTo(
-        this.$refs.totalSeatPrice,
-        0.5,
-        { opacity: 0 },
-        { opacity: 1 }
-      );
+      const newPrice = 14 * this.seatsId.length;
+      TweenMax.to(this, 0.5, {
+        totalSeatPrice: newPrice,
+        roundProps: 'totalSeatPrice',
+        ease: Linear.easeInOut,
+        onComplete: () => {
+          this.totalSeatPrice = newPrice;
+        }
+      });
     }
   }
 });
