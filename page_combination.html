@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/choose_schedule.css">
+  <link rel="stylesheet" href="css/movie_detail.css">
+  <link rel="stylesheet" href="css/movie_trailer_page.css">
+  <link rel="stylesheet" href="css/choose_area_page.css">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+
+<div id="browserMoviesPage" @wheel="onScrollPage" v-show="showBrowseMovies">
+  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"
+       ref="backgroundPosterImg"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan logo">NK.</h2>
+    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+  </div>
+  <div class="nowShowingMovieSlider" ref="nowShowingMovieSlider">
+    <div class="poster1 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[0].posterUrlPath }"
+         @mousemove="onMouseMove" @mouseleave="onMouseLeave" @mousedown="onMouseDown" @mouseup="onMouseUp">
+    </div>
+    <div class="poster2 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[1].posterUrlPath }"
+         @mousemove="onMouseMove" @mouseleave="onMouseLeave" @mousedown="onMouseDown" @mouseup="onMouseUp">
+    </div>
+    <div class="poster3 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[2].posterUrlPath }"
+         @mousemove="onMouseMove" @mouseleave="onMouseLeave" @mousedown="onMouseDown" @mouseup="onMouseUp">
+    </div>
+  </div>
+  <div class="movieTitle" ref="movieTitle">
+    <h2 class="fontWhite fontSpartan"><span ref="MovieTitleLine1">{{ currentMovieTitleLine1 }}</span></h2>
+    <h2 class="fontWhite fontSpartan"><span ref="MovieTitleLine2">{{ currentMovieTitleLine2 }}</span></h2>
+  </div>
+  <div class="verticalBarChooseTypeOfMovies">
+    <div class="fontWhite fontMontserrat nowShowing" @click="onClickNowShowing" ref="nowShowing">Now showing</div>
+    <div class="fontWhite fontMontserrat comingSoon" @click="onClickComingSoon" ref="comingSoon">Coming soon</div>
+  </div>
+  <div class="movieReleaseDate" ref="movieReleaseDate">
+    <h3 class="fontLightGray fontMontserrat"><span ref="movieReleaseDate1">Premiere</span></h3>
+    <h2 class="fontWhite fontMontserrat"><span ref="movieReleaseDate2">{{ currentMovieReleaseDate }}</span></h2>
+  </div>
+  <div class="movieInfo" ref="movieInfo">
+    <div class="fontLightGray fontMontserrat movieScore">
+      <span ref="movieScore"><button>IMDb</button>
+      <span class="idmbScore"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10</span></span>
+    </div>
+    <div class="fontWhite fontMontserrat movieDetail">
+      <span ref="movieDetail">{{ currentMovieCategory }} | {{ currentMovieRunningTime }}</span>
+    </div>
+  </div>
+</div>
+
+<div id="movieDetail" class="bookingPage" v-show="showMovieDetail">
+  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan logo">NK.</h2>
+    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+  </div>
+  <div class="movieDetailContainer">
+    <div class="posterContainer" ref="posterContainer" :style="{ backgroundImage: currentMovieDetailPoster }">
+      <a class="playBtn">
+        <i class="material-icons operation play">play_arrow</i></a>
+    </div>
+    <div class="detailContainer" ref="detailContainer">
+      <div class="wrapper">
+        <div class="movieTitle">
+          <h1 class="fontWhite fontSpartan">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h1>
+        </div>
+
+        <div class="movieDescription">
+          <h2 class="fontWhite fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
+          <div class="movieScore fontWhite">
+            <button>IMDb</button>
+            <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+          </div>
+        </div>
+
+        <div class="movieDetail-1">
+          <div class="movieDetailGroup releaseDate">
+            <h3 class="fontLightGray fontMontserrat">Premiere</h3>
+            <h2 class="fontWhite fontMontserrat">{{ currentMovieReleaseDate }}</h2>
+          </div>
+          <div class="movieDetailGroup director">
+            <h3 class="fontLightGray fontMontserrat">Director</h3>
+            <h2 class="fontWhite fontMontserrat">Denis Villeneuve</h2>
+          </div>
+        </div>
+
+        <div class="movieDetail-2">
+          <div class="movieDetailGroup starring">
+            <h3 class="fontLightGray fontMontserrat">Starring</h3>
+            <h2 class="fontWhite fontMontserrat">Harrison Ford, Ryan Gosling, Ana de Armas</h2>
+          </div>
+        </div>
+
+        <div class="movieDetail-3">
+          <div class="movieDetailGroup storyLine">
+            <h3 class="fontLightGray fontMontserrat">Story line</h3>
+            <h2 class="fontWhite fontMontserrat">Officer K (Ryan Gosling), a new blade runner for the Los Angeles
+              Police
+              Department, unearths a long-buried secret that has the potential to plunge what's left of society into
+              chaos. His discovery leads him on a quest to find Rick Deckard (Harrison Ford), a former blade runner
+              who's been missing for 30 years</h2>
+          </div>
+        </div>
+
+        <div style="display: flex; margin-top: -32px; align-items: center">
+          <button class="btn fontMontserrat fontWhite"
+                  ref="btn" @click="onClickBookNow">
+            <span ref="btnText">Book now</span>
+          </button>
+          <a class="fontMontserrat fontLightGray backBtn"
+             style="margin-left: auto; margin-top: 45px; margin-right: 5em" @click="onClickGoBackBrowseMovies">
+            <i class="fa fa-long-arrow-left"></i>
+            Back to browse movies
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="movieTrailerPage" v-show="showMovieTrailer">
+  <div class="backgroundPosterImg fullDivImg"></div>
+  <div class="header">
+    <h2 class="fontWhite fontSpartan logo">NK.</h2>
+    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+  </div>
+  <div class="bookingContainer">
+    <div class="theaterLightContainer"></div>
+    <div class="videoTrailerContainer">
+      <iframe width="90%" height="500" :src="currentMovieUrlPath" frameborder="0" gesture="media"
+              allow="encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="footer">
+      <a class="fontMontserrat fontLightGray backBtn" @click="onClickBackToMovieDetail">
+        <i class="fa fa-long-arrow-left"></i>
+        Back to movie
+      </a>
+      <button class="btn bookNowBtn fontMontserrat fontWhite"
+              ref="btn" @click="onClickBookNow">
+        <span ref="btnText">Book now</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="chooseAreaPage" v-show="showChooseArea">
+  <div class="header">
+    <h2 class="fontWhite fontSpartan logo">NK.</h2>
+    <h2 class="fontWhite fontMontserrat stepTitle"><b>01.</b> Choose theater</h2>
+    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+  </div>
+  <div class="chooseAreaContainer">
+    <div class="theaterInfoContainer fontMontserrat fontWhite">
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Rovaniemi'" ref="Rovaniemi">
+        <h2 class="fontPurple">Northkino Fantasy (Rovaniemi)</h2>
+        <p>
+          The new Northkino Fantasy, opened in April 2017, is the first full-scale cinema center in Southern Europe,
+          with
+          seven top halls featuring cutting-edge laser projectors. At the same time Apple also opened the second Scape
+          Premium platform in Finland , featuring the Barco flagship laser projector, the world's leading Dolby Atmos
+          sound system, and the luxurious Italian benches.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 9:00AM - 8:00PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          9,00 € - 10,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          11,50 € - 12,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          12,00 € - 14,50 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Oulu'" ref="Oulu">
+        <h2 class="fontPurple">Northkino Plaza (Oulu)</h2>
+        <p>
+          Northkino Plaza, which has been offered for Oulu film experiences, is located in the heart of the city, a
+          stone's throw from the pedestrian street Rotuaari. The main entrance to the Plaza and the Scandic Hotel
+          directly leads to ticket sales and delicatessen. Tickets and movie trailers are sold at the same desk.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 12:00AM - 11:00PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          10,00 € - 11,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          12,00 € - 13,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          12,50 € - 14,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Tampere'" ref="Tampere">
+        <h2 class="fontPurple">Northkino Koskikeskus (Tampere)</h2>
+        <p>
+          Koskikeskus is Tampere's most versatile shopping center in the city center. At the bottom floor of the
+          Koskikeskus, you will find a cozy Finnkino Cine Atlas movie theater favored by families especially. There is
+          also a popular café and an ice cream parlor in the movie theater.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 12:30AM - 10:00PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          11,00 € - 12,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          13,00 € - 14,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          13,50 € - 15,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Turku'" ref="Turku">
+        <h2 class="fontPurple">Northkino Kinopalatsi (Turku)</h2>
+        <p>
+          The modern cinema center was inaugurated in Turku in the spring of 2001. Kinopalats have been invested in the
+          9-storied view of relaxation; all the halls are steeply staggered and the foot space between the rows is
+          optimal. The presentation technology is top-notch: all the halls have digital sound and big screen.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 11:00AM - 12PM from Monday to Saturday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          12,00 € - 13,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          14,00 € - 15,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          14,50 € - 16,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+      <div class="theaterInfo fontLightGray" v-show="currentCinemaDescription === 'Helsinki'" ref="Helsinki">
+        <h2 class="fontPurple">Northkino Kinopalatsi (Helsinki)</h2>
+        <p>
+          Helsinki Kinopalatsi was opening the first Finnish multiplex movie theater in Finland in autumn 1998. 10
+          high-class auditoriums, featuring all digital audio and contemporary seating, are the most demanding of
+          filmmakers. Kinopalatsi is located in the Fennia Quarter, which also includes a wealth of services from fast
+          food and sushi to nightclubs and bars.
+        </p>
+        <p><span class="fontWhite">Opening hours:</span> 11:30AM - 11:30PM from Monday to Sunday. </p>
+        <p><span class="fontWhite">Tickets price:</span></p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Classic </span>:
+          13,00 € - 14,50 € for 2D movies, 11,00 € - 12,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Normal </span>:
+          15,00 € - 16,50 € for 2D movies, 13,00 € - 14,50 € for 3D movies.
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i>
+          <span class="fontPurple">Special </span>:
+          15,50 € - 17,00 € for 2D movies, 13,50 € - 15,00 € for 3D movies.
+        </p>
+        <button class="btn fontMontserrat fontWhite" ref="btn">
+          <span ref="btnText">Choose</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="mapContainer">
+      <template v-for="cinema in cinemas">
+        <div class="mapPin" :class="['mapPin' + cinema]" @click="setActiveCinema(cinema)">
+          <div class="mapPinOuter"
+               :style="{'border-color': cinema === currentCinemaMapPin ? 'transparent' : '#C4A8FF'}">
+            <div class="mapPinInner" :class="{mapPinRipple: cinema === currentCinemaMapPin}"></div>
+          </div>
+          <h2 class="fontMontserrat fontWhite">{{ cinema }}</h2>
+        </div>
+      </template>
+    </div>
+  </div>
+  <div class="footer">
+    <a class="fontMontserrat fontLightGray backBtn">
+      <i class="fa fa-long-arrow-left"></i>
+      Back to movie
+    </a>
+    <h2 class="fontMontserrat fontLightGray mapInstruction">
+      <i class="fa fa-mouse-pointer"></i>
+      Click on map to choose theater
+    </h2>
+  </div>
+</div>
+
+<script src="libs/TweenMax.min.js"></script>
+<script src="libs/vue.min.js"></script>
+<script src="js/browser_movies_page.js"></script>
+<script src="js/movie_detail.js"></script>
+<script src="js/movie_trailer_page.js"></script>
+<script src="js/choose_area_page.js"></script>
+</body>
+</html>

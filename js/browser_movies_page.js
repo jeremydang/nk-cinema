@@ -5,7 +5,9 @@ let nowShowingMovies = [
     releaseDate: '15 December, 2017',
     imdbScore: 9.0,
     category: 'Adventure, Fantasy',
-    runningTime: '2h 32min'
+    runningTime: '2h 32min',
+    detailPosterImgPath: 'assets/images/star_war_movie_detail.jpg',
+    videoUrlPath: 'https://www.youtube.com/embed/Q0CbN8sfihY'
   },
   {
     posterImgPath: 'assets/images/wonder_woman_poster.jpg',
@@ -13,7 +15,9 @@ let nowShowingMovies = [
     releaseDate: '2 June, 2017',
     imdbScore: 7.6,
     category: 'Action, Fantasy',
-    runningTime: '2h 21min'
+    runningTime: '2h 21min',
+    detailPosterImgPath: 'assets/images/wonder_woman_movie_detail.jpg',
+    videoUrlPath: 'https://www.youtube.com/embed/1Q8fG0TtVAY'
   },
   {
     posterImgPath: 'assets/images/blade_runner_poster.jpg',
@@ -21,13 +25,16 @@ let nowShowingMovies = [
     releaseDate: '6 October, 2017',
     imdbScore: 8.4,
     category: 'Mystery, Sci-Fi',
-    runningTime: '2h 44min'
+    runningTime: '2h 44min',
+    detailPosterImgPath: 'assets/images/blade_runner_vertical_poster.jpg',
+    videoUrlPath: 'https://www.youtube.com/embed/gCcx85zbxz4'
   }
 ];
 // Add poster url path
 nowShowingMovies = nowShowingMovies.map(movie => ({
   ...movie,
-  posterUrlPath: `url('${movie.posterImgPath}')`
+  posterUrlPath: `url('${movie.posterImgPath}')`,
+  detailUrlPath: `url('${movie.detailPosterImgPath}')`
 }));
 
 let comingSoonMovies = [
@@ -37,7 +44,9 @@ let comingSoonMovies = [
     releaseDate: '17 November, 2017',
     imdbScore: 7.2,
     category: 'Action, Fantasy',
-    runningTime: '2h'
+    runningTime: '2h',
+    detailPosterImgPath: 'assets/images/justice_league_movie_detail.jpg',
+    videoUrlPath: 'https://www.youtube.com/embed/r9-DM9uBtVI'
   },
   {
     posterImgPath: 'assets/images/thor_poster.jpg',
@@ -45,7 +54,9 @@ let comingSoonMovies = [
     releaseDate: '3 November, 2017',
     imdbScore: 8.2,
     category: 'Adventure, Comedy',
-    runningTime: '2h 10min'
+    runningTime: '2h 10min',
+    detailPosterImgPath: 'assets/images/thor_movie_detail.jpg',
+    videoUrlPath: 'https://www.youtube.com/embed/ue80QwXMRHg'
   },
   {
     posterImgPath: 'assets/images/assassin_creed_poster.jpg',
@@ -53,13 +64,16 @@ let comingSoonMovies = [
     releaseDate: '21 December 2016',
     imdbScore: 5.8,
     category: 'Action, Adventure',
-    runningTime: '1h 55min'
+    runningTime: '1h 55min',
+    detailPosterImgPath: 'assets/images/assassin_creed_movie_detail.png',
+    videoUrlPath: 'https://www.youtube.com/embed/4haJD6W136c'
   }
 ];
 // Add poster url path
 comingSoonMovies = comingSoonMovies.map(movie => ({
   ...movie,
-  posterUrlPath: `url('${movie.posterImgPath}')`
+  posterUrlPath: `url('${movie.posterImgPath}')`,
+  detailUrlPath: `url('${movie.detailPosterImgPath}')`
 }));
 
 const imgMultiplyCoeff = [0, -1, -2];
@@ -82,9 +96,13 @@ const browserMoviesPage = new Vue({
     currentMovieCategory: nowShowingMovies[0].category,
     currentMovieImdbScore: nowShowingMovies[0].imdbScore,
     currentMovieRunningTime: nowShowingMovies[0].runningTime,
+    currentMovieDetailPoster: nowShowingMovies[0].detailUrlPath,
+    currentMovieUrlPath: nowShowingMovies[0].videoUrlPath,
     dx: 0,
     dy: 0,
-    currentMovieChanged: false
+    currentMovieChanged: false,
+
+    showBrowseMovies: true
   },
   mounted: function() {
     const tl = new TimelineMax();
@@ -171,19 +189,71 @@ const browserMoviesPage = new Vue({
         ease: Power4.easeOut
       });
 
+      this.unmount();
+      // movieDetail.updateState(this);
+      // movieDetail.mount();
+    },
+    mount: function() {
+      this.showBrowseMovies = true;
       const tl = new TimelineMax();
       const { nowShowingMovieSlider } = this.$refs;
       const { movieTitle } = this.$refs;
       const { movieReleaseDate } = this.$refs;
       const { movieInfo } = this.$refs;
       const { nowShowing, comingSoon } = this.$refs;
+      const moviePoster = this.$el.querySelectorAll('.moviePoster');
 
       tl
         .fromTo(
-          nowShowingMovieSlider,
+          moviePoster[this.currentImgIndex],
           1.5,
+          { y: 100, opacity: 0.5, ease: Power4.easeOut },
+          { y: 0, opacity: 1, ease: Power4.easeOut }
+        )
+        .fromTo(
+          [movieTitle, movieInfo, movieReleaseDate],
+          1,
+          { y: 50, opacity: 0, ease: Power4.easeOut },
           { y: 0, opacity: 1, ease: Power4.easeOut },
-          { y: 100, opacity: 0, ease: Power4.easeOut }
+          '-=0.7'
+        )
+        .fromTo(
+          nowShowing,
+          0.5,
+          { y: -10, opacity: 0, ease: Power2.easeOut },
+          {
+            y: 0,
+            opacity: this.currentMovies === nowShowingMovies ? 1 : 0.2,
+            ease: Power2.easeOut
+          },
+          '-=1.6'
+        )
+        .fromTo(
+          comingSoon,
+          0.5,
+          { y: -10, opacity: 0, ease: Power2.easeOut },
+          {
+            y: 0,
+            opacity: this.currentMovies === comingSoonMovies ? 1 : 0.2,
+            ease: Power2.easeOut
+          },
+          '-=1.6'
+        );
+    },
+    unmount: function() {
+      const tl = new TimelineMax();
+      const { movieTitle } = this.$refs;
+      const { movieReleaseDate } = this.$refs;
+      const { movieInfo } = this.$refs;
+      const { nowShowing, comingSoon } = this.$refs;
+      const moviePoster = this.$el.querySelectorAll('.moviePoster');
+
+      tl
+        .fromTo(
+          moviePoster[this.currentImgIndex],
+          1,
+          { y: 0, opacity: 1, ease: Power4.easeOut },
+          { y: 50, opacity: 0, ease: Power4.easeOut }
         )
         .fromTo(
           [movieTitle, movieInfo, movieReleaseDate],
@@ -197,7 +267,12 @@ const browserMoviesPage = new Vue({
           0.5,
           { y: -10, opacity: 0, ease: Power2.easeOut },
           '-=1.6'
-        );
+        )
+        .call(() => {
+          this.showBrowseMovies = false;
+          movieDetail.updateState(this);
+          movieDetail.mount();
+        });
     },
     changeMovieDetail: function() {
       this.currentBackgroundPoster = this.currentMovies[
@@ -227,6 +302,14 @@ const browserMoviesPage = new Vue({
       this.currentMovieRunningTime = this.currentMovies[
         this.currentImgIndex
       ].runningTime;
+
+      this.currentMovieDetailPoster = this.currentMovies[
+        this.currentImgIndex
+      ].detailUrlPath;
+
+      this.currentMovieUrlPath = this.currentMovies[
+        this.currentImgIndex
+      ].videoUrlPath;
     }
   },
   watch: {
