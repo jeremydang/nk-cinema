@@ -83,7 +83,8 @@ const browserMoviesPage = new Vue({
     currentMovieImdbScore: nowShowingMovies[0].imdbScore,
     currentMovieRunningTime: nowShowingMovies[0].runningTime,
     dx: 0,
-    dy: 0
+    dy: 0,
+    currentMovieChanged: false
   },
   mounted: function(){
     const tl = new TimelineMax();
@@ -92,7 +93,7 @@ const browserMoviesPage = new Vue({
     const { movieReleaseDate } = this.$refs;
     const { movieInfo } = this.$refs;
     const { nowShowing, comingSoon } = this.$refs;
-    
+
     tl.fromTo(nowShowingMovieSlider, 1.5, 
       {y:100, opacity:0.5, ease: Power4.easeOut},
       {y:0, opacity:1, ease: Power4.easeOut})
@@ -142,87 +143,114 @@ const browserMoviesPage = new Vue({
       const tl = new TimelineMax();
       tl.to(moviePoster[this.currentImgIndex], 0.2, {z:-65, ease: Power4.easeOut})
       .to(moviePoster[this.currentImgIndex], 0.2, {z:0, ease: Power4.easeOut}) // temporary alternative to mouseup
+    },
+    changeMovieDetail: function(){
+      this.currentBackgroundPoster = this.currentMovies[
+        this.currentImgIndex
+      ].posterUrlPath;
+
+      this.currentMovieTitleLine1 = this.currentMovies[
+        this.currentImgIndex
+      ].title[0];
+
+      this.currentMovieTitleLine2 = this.currentMovies[
+        this.currentImgIndex
+      ].title[1];
+
+      this.currentMovieReleaseDate = this.currentMovies[
+        this.currentImgIndex
+      ].releaseDate;
+
+      this.currentMovieCategory = this.currentMovies[
+        this.currentImgIndex
+      ].category;
+
+      this.currentMovieImdbScore = this.currentMovies[
+        this.currentImgIndex
+      ].imdbScore;
+
+      this.currentMovieRunningTime = this.currentMovies[
+        this.currentImgIndex
+      ].runningTime;
     }
+
   },
   watch: {
     currentImgIndex: function() {
-      const { nowShowingMovieSlider } = this.$refs;
-      const { backgroundPosterImg } = this.$refs;
-      const { MovieTitleLine1 } = this.$refs;
-      const { MovieTitleLine2 } = this.$refs;
-      const { movieReleaseDate1 } = this.$refs;
-      const { movieReleaseDate2 } = this.$refs;
-      const { movieScore } = this.$refs;
-      const { movieDetail } = this.$refs;
-      const moviePoster = this.$el.querySelectorAll('.moviePoster')
+      if(!this.currentMovieChanged){
+        const { nowShowingMovieSlider } = this.$refs;
+        const { backgroundPosterImg } = this.$refs;
+        const { MovieTitleLine1 } = this.$refs;
+        const { MovieTitleLine2 } = this.$refs;
+        const { movieReleaseDate1 } = this.$refs;
+        const { movieReleaseDate2 } = this.$refs;
+        const { movieScore } = this.$refs;
+        const { movieDetail } = this.$refs;
+        const moviePoster = this.$el.querySelectorAll('.moviePoster')
 
-      tl
-      .to(nowShowingMovieSlider, 1.4, {
-        y:
-          (500 * 0.9 + browserHeight * 0.27) *
-            imgMultiplyCoeff[this.currentImgIndex] +
-          this.currentImgIndex * 13,
-        ease: Expo.easeInOut
-      })
-      .to(
-        backgroundPosterImg,
-        0.3,
-        { opacity: 0, ease: Power2.easeIn }, '-=1.4')
-      .to(
-        moviePoster,
-        0.3,
-        { opacity: 0.4, ease: Power2.easeIn }, '-=1.3')
-      .to(
-        [MovieTitleLine1,MovieTitleLine2, movieReleaseDate1, 
-        movieReleaseDate2, movieScore, movieDetail],
-        0.5,
-        {bottom: -200, opacity:0, ease: Expo.easeIn}, '-=1.6')
-      .to(
-        [MovieTitleLine1,MovieTitleLine2, movieReleaseDate1, 
-        movieReleaseDate2, movieScore, movieDetail],
-        0.5,
-        {bottom: 0, opacity:1, ease: Expo.easeOut}, '-=0.6')
-      .to(
-        backgroundPosterImg,
-        0.5,
-        { opacity: 0.7, ease: Power2.easeIn}, '-=0.9')
-      .to(
-        moviePoster,
-        0.3,
-        { opacity: 1, ease: Power2.easeIn}, '-=0.9');
+        tl
+        .to(nowShowingMovieSlider, 1.4, {
+          y:
+            (500 * 0.9 + browserHeight * 0.27) *
+              imgMultiplyCoeff[this.currentImgIndex] +
+            this.currentImgIndex * 13,
+          ease: Expo.easeInOut
+        })
+        .to(
+          backgroundPosterImg,
+          0.3,
+          { opacity: 0, ease: Power2.easeIn }, '-=1.4')
+        .to(
+          moviePoster,
+          0.3,
+          { opacity: 0.4, ease: Power2.easeIn }, '-=1.3')
+        .to(
+          [MovieTitleLine1,MovieTitleLine2, movieReleaseDate1, 
+          movieReleaseDate2, movieScore, movieDetail],
+          0.5,
+          {bottom: -200, opacity:0, ease: Expo.easeIn}, '-=1.6')
+        .to(
+          [MovieTitleLine1,MovieTitleLine2, movieReleaseDate1, 
+          movieReleaseDate2, movieScore, movieDetail],
+          0.5,
+          {bottom: 0, opacity:1, ease: Expo.easeOut}, '-=0.6')
+        .to(
+          backgroundPosterImg,
+          0.5,
+          { opacity: 0.7, ease: Power2.easeIn}, '-=0.9')
+        .to(
+          moviePoster,
+          0.3,
+          { opacity: 1, ease: Power2.easeIn}, '-=0.9');
 
-      setTimeout(() => {
-        this.currentBackgroundPoster = this.currentMovies[
-          this.currentImgIndex
-        ].posterUrlPath;
+        setTimeout(() => browserMoviesPage.changeMovieDetail(), 700);
+      }
 
-        this.currentMovieTitleLine1 = this.currentMovies[
-          this.currentImgIndex
-        ].title[0];
-
-        this.currentMovieTitleLine2 = this.currentMovies[
-          this.currentImgIndex
-        ].title[1];
-
-        this.currentMovieReleaseDate = this.currentMovies[
-          this.currentImgIndex
-        ].releaseDate;
-
-        this.currentMovieCategory = this.currentMovies[
-          this.currentImgIndex
-        ].category;
-
-        this.currentMovieImdbScore = this.currentMovies[
-          this.currentImgIndex
-        ].imdbScore;
-
-        this.currentMovieRunningTime = this.currentMovies[
-          this.currentImgIndex
-        ].runningTime;
-      }, 700);
     },
     currentMovies: function() {
+
+      this.currentMovieChanged = true;
+
+      this.currentImgIndex = 0;
+
+      this.changeMovieDetail();
+
+      const tl = new TimelineMax();
+      const { nowShowingMovieSlider } = this.$refs;
+      const { movieTitle } = this.$refs;
+      const { movieReleaseDate } = this.$refs;
+      const { movieInfo } = this.$refs;
       const { nowShowing, comingSoon } = this.$refs;
+
+      tl.fromTo(nowShowingMovieSlider, 1.5, 
+        {y:100, opacity:0.5, ease: Power4.easeOut},
+        {y:0, opacity:1, ease: Power4.easeOut})
+      .fromTo([movieTitle, movieInfo, movieReleaseDate], 1, 
+        {y:50, opacity:0, ease: Power4.easeOut},
+        {y:0, opacity:1, ease: Power4.easeOut}, '-=0.7')
+      .call(function(){browserMoviesPage.currentMovieChanged = false})
+
+
       if (this.currentMovies === comingSoonMovies) {
         TweenMax.to(comingSoon, 0.5, { opacity: 1 });
         TweenMax.to(nowShowing, 0.5, { opacity: 0.2 });
