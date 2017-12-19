@@ -206,11 +206,6 @@
 	transition: background-color 0.3s;
 }
 
-.effectBtn-click,
-.effectBtn:focus {
-	background-color: #4506CF !important;
-}
-
 .effectBtn::after {
 	position: absolute;
 	top: 50%;

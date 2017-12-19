@@ -61,7 +61,9 @@ const chooseSchedule = new Vue({
     currentMovieUrlPath: nowShowingMovies[0].videoUrlPath,
     currentCinemaDescription: 'Oulu',
     selectedDate: '',
-    selectedTime: ''
+    selectedTime: '',
+    plusBtnClick: false,
+    minusBtnClick: false
   },
   mounted: function() {
     this.$refs.seats.appendChild(createSeat(this.seatsId[0]));
@@ -164,6 +166,10 @@ const chooseSchedule = new Vue({
         .to(btn, 0.2, { z: 0, ease: Power4.easeOut }, '+=0.1'); // temporary alternative to mouseup
     },
     addSeat: function(e) {
+      this.plusBtnClick = true;
+      setTimeout(() => {
+        this.plusBtnClick = false;
+      }, 500);
       const newlyAddedSeatId = 'seat' + this.seatsId.length;
       this.seatsId.push(newlyAddedSeatId);
       const seat = createSeat(newlyAddedSeatId);
@@ -177,6 +183,10 @@ const chooseSchedule = new Vue({
       );
     },
     removeSeat: function(e) {
+      this.minusBtnClick = true;
+      setTimeout(() => {
+        this.minusBtnClick = false;
+      }, 500);
       const lastSeatId = seatsId[seatsId.length - 1];
       const lastSeatElement = document.getElementById(lastSeatId);
       this.seatsId.pop();

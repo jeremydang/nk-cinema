@@ -418,10 +418,10 @@
           <h2 class="scheduleTitle fontWhite fontMontserrat">Seats</h2>
           <div class="seatContainer">
             <div class="addSeat">
-              <a @click="removeSeat"><i class="material-icons operation">remove</i></a>
+              <a class="effectBtn" :class="{'effectBtn-click': minusBtnClick}" @click="removeSeat"><i class="material-icons operation">remove</i></a>
               <div class="seats" ref="seats">
               </div>
-              <a @click="addSeat"><i class="material-icons operation">add</i></a>
+              <a class="effectBtn" :class="{'effectBtn-click': plusBtnClick}" @click="addSeat"><i class="material-icons operation">add</i></a>
             </div>
           </div>
           <h5 class="ticketPrice fontMontserrat fontLightGray">Total: <span ref="totalSeatPrice">{{ totalSeatPrice }} &euro;</span>
