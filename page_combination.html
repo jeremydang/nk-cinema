@@ -353,7 +353,7 @@
   </div>
 </div>
 
-<div id="chooseSchedule" class="bookingPage" v-show="showChooseSchedule">
+<div id="chooseSchedule" class="bookingPage" v-show="showChooseSchedule" ref="frontLayer" class="frontLayer" @click="closeMenu">
   <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}"
        ref="backgroundPosterImg"></div>
   <div class="header">
