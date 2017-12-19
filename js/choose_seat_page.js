@@ -116,7 +116,7 @@ const chooseSeatPage = new Vue({
       );
     },
     unmount: function(onComplete) {
-      const { bookingContainer } = this.$refs;
+      const { bookingContainer, screenImg } = this.$refs;
       const tl = new TimelineMax();
 
       tl
@@ -128,6 +128,7 @@ const chooseSeatPage = new Vue({
           },
           { height: 0, ease: Expo.easeOut }
         )
+        .fromTo(screenImg, 0.3, { opacity: 1 }, { opacity: 0 }, '-=1')
         .fromTo(bookingContainer, 0.5, { opacity: 1 }, { opacity: 0 }, '-=0.5')
         .call(onComplete);
     },
