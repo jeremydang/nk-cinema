@@ -125,12 +125,18 @@ a{
   align-items: baseline;
 }
 
-.header :first-child {
+.header .logo {
   margin: 1em 1.2em;
   font-size: 1.8em;
 }
 
-.header :last-child {
+.header .stepTitle{
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 1em 2em;
+}
+
+.header .menu {
   margin: 1em 1.2em 1em auto;
   border-bottom: 2px solid #a3a3a3;
 }

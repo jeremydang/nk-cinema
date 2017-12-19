@@ -13,7 +13,7 @@
 }
 
 #chooseAreaPage .theaterInfo {
-  padding: 4em 0 0 14em;
+  padding: 4em 0 0 12em;
 }
 
 #chooseAreaPage .theaterInfo h2 {
@@ -109,5 +109,5 @@
   font-size: 1.2em;
   flex: 1;
   text-align: center;
-  margin: 0.5em 0 0 -4.5em;
+  margin: 0.5em 0 0 -6em;
 }
