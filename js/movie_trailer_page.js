@@ -67,6 +67,35 @@ const movieTrailer = new Vue({
       this.currentMovieRunningTime = currentMovieRunningTime;
       this.currentMovieDetailPoster = currentMovieDetailPoster;
       this.currentMovieUrlPath = currentMovieUrlPath;
+    },
+    onMenuClick: function(){
+      const { frontLayer } = this.$refs;
+      TweenMax.set(frontLayer, {cursor: 'pointer'});
+      const tl = new TimelineMax();
+      tl.to(frontLayer, 0.6, {
+        scale: 0.5, xPercent: '-12%', rotationY: 15,
+        ease: Expo.easeInOut
+      })
+        .staggerFromTo('.menuItem', 0.4,
+          {y: 50, opacity: 0, ease: Expo.easeOut},
+          {y: 0, opacity: 1, ease: Expo.easeOut }, 0.2, '-=0.3')
+        .call(() => {this.onMenuShow = true})
+    },
+    closeMenu: function(){
+      if(this.onMenuShow){
+        const { frontLayer } = this.$refs;
+        TweenMax.set(frontLayer, {cursor: 'initial'});
+        const tl = new TimelineMax();
+        tl
+          .to('.menuItem', 0.4,
+            {y: -50, opacity: 0, ease: Expo.easeOut })
+          .to(frontLayer, 0.6, {
+            scale: 1, xPercent: '0', rotationY: 0,
+            ease: Expo.easeInOut
+          }, '-=0.4')
+
+          .call(() => {this.onMenuShow = false})
+      }
     }
   }
 });

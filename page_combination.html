@@ -16,20 +16,25 @@
   <link rel="stylesheet" href="css/choose_seat_page.css">
   <link rel="stylesheet" href="css/checkout_page.css">
   <title>Document</title>
-  <style>
-    body {
-      background-color: black;
-    }
-  </style>
 </head>
 <body>
 
-<div id="browserMoviesPage" @wheel="onScrollPage" v-show="showBrowseMovies">
+<nav class="navbar">
+  <ul>
+    <li class="menuItem"><a href="/index.html" class="fontMontserrat menuItemName">Home</a></li>
+    <li class="menuItem"><a href="/page_combination.html" class="fontMontserrat menuItemName">Booking</a></li>
+    <li class="menuItem"><a href="/page_combination.html" class="fontMontserrat menuItemName">Movies</a></li>
+    <li class="menuItem"><a href="/page_combination.html" class="fontMontserrat menuItemName">Theaters</a></li>
+  </ul>
+</nav>
+
+<div id="browserMoviesPage" @wheel="onScrollPage" v-show="showBrowseMovies" ref="frontLayer" @click="closeMenu"
+     class="frontLayer">
   <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"
        ref="backgroundPosterImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="nowShowingMovieSlider" ref="nowShowingMovieSlider">
     <div class="poster1 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[0].posterUrlPath }"
@@ -65,11 +70,12 @@
   </div>
 </div>
 
-<div id="movieDetail" class="bookingPage" v-show="showMovieDetail">
+<div id="movieDetail" class="bookingPage" v-show="showMovieDetail" ref="frontLayer" class="frontLayer"
+     @click="closeMenu">
   <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="movieDetailContainer">
     <div class="posterContainer" ref="posterContainer" :style="{ backgroundImage: currentMovieDetailPoster }">
@@ -86,7 +92,8 @@
           <h2 class="fontWhite fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
           <div class="movieScore fontWhite">
             <button>IMDb</button>
-            <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+            <span class="idmbScore fontMontserrat fontLightGray"><span
+              class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
           </div>
         </div>
 
@@ -135,11 +142,12 @@
   </div>
 </div>
 
-<div id="movieTrailerPage" v-show="showMovieTrailer" ref="movieTrailerPage">
+<div id="movieTrailerPage" v-show="showMovieTrailer" ref="movieTrailerPage" ref="frontLayer" class="frontLayer"
+     @click="closeMenu">
   <div class="backgroundPosterImg fullDivImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="bookingContainer">
     <div class="theaterLightContainer"></div>
@@ -160,12 +168,14 @@
   </div>
 </div>
 
-<div id="chooseAreaPage" v-show="showChooseArea" ref="chooseAreaPage">
-  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }" ref="backgroundPosterImg"></div>
+<div id="chooseAreaPage" v-show="showChooseArea" ref="chooseAreaPage" ref="frontLayer" class="frontLayer"
+     @click="closeMenu">
+  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"
+       ref="backgroundPosterImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
     <h2 class="fontWhite fontMontserrat stepTitle"><b>01.</b> Choose theater</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="chooseAreaContainer">
     <div class="theaterInfoContainer fontMontserrat fontWhite">
@@ -344,11 +354,12 @@
 </div>
 
 <div id="chooseSchedule" class="bookingPage" v-show="showChooseSchedule">
-  <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}" ref="backgroundPosterImg"></div>
+  <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}"
+       ref="backgroundPosterImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
     <h2 class="fontWhite fontMontserrat stepTitle"><b>02.</b> Choose session times</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="bookingContainer" ref="bookingContainer">
     <div class="posterContainer" :style="{backgroundImage: currentMovieDetailPoster}">
@@ -360,11 +371,13 @@
       <div class="movieInfoContainer">
         <div class="movieInfo">
           <h2 class="fontWhite fontMontserrat">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h2>
-          <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
+          <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R
+            Limit</h2>
         </div>
         <div class="movieScore fontWhite">
           <button>IMDb</button>
-          <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+          <span class="idmbScore fontMontserrat fontLightGray"><span
+            class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
         </div>
       </div>
 
@@ -373,13 +386,14 @@
           <h2 class="scheduleTitle fontWhite fontMontserrat">{{ month }}</h2>
           <div class="dateContainer">
             <script type="text/javascript">
-              for(let i=0; i<7; i++){
+              for (let i = 0; i < 7; i++) {
                 document.write(
                   `<div class="date fontWhite fontMontserrat">
-                      <p class="fontLightGray weekday">{{ weekDay[`+ i + `] }}</p>
-                      <a @click="setActiveDate(`+ i + `)" :class="{active:`+ i + ` === activeDate}">
-                      {{ date[`+ i + `] }}</a>
-                   </div>`)}
+                      <p class="fontLightGray weekday">{{ weekDay[` + i + `] }}</p>
+                      <a @click="setActiveDate(` + i + `)" :class="{active:` + i + ` === activeDate}">
+                      {{ date[` + i + `] }}</a>
+                   </div>`)
+              }
             </script>
           </div>
         </div>
@@ -388,13 +402,14 @@
           <h2 class="scheduleTitle fontWhite fontMontserrat">NorthKino {{ currentCinemaDescription }}</h2>
           <div class="timeContainer">
             <script type="text/javascript">
-              for(let i=0; i<5; i++){
+              for (let i = 0; i < 5; i++) {
                 document.write(
                   `<div class="time fontWhite fontMontserrat">
-                      <p class="fontLightGray movieType">{{ movieType[`+ i + `] }}</p>
-                      <a @click="setActiveTime(`+ i + `)" :class="{active:`+ i + ` === activeTime}">
-                      {{ time[`+ i + `] }}</a>
-                   </div>`)}
+                      <p class="fontLightGray movieType">{{ movieType[` + i + `] }}</p>
+                      <a @click="setActiveTime(` + i + `)" :class="{active:` + i + ` === activeTime}">
+                      {{ time[` + i + `] }}</a>
+                   </div>`)
+              }
             </script>
           </div>
         </div>
@@ -409,12 +424,13 @@
               <a @click="addSeat"><i class="material-icons operation">add</i></a>
             </div>
           </div>
-          <h5 class="ticketPrice fontMontserrat fontLightGray">Total: <span ref="totalSeatPrice">{{ totalSeatPrice }} &euro;</span></h5>
+          <h5 class="ticketPrice fontMontserrat fontLightGray">Total: <span ref="totalSeatPrice">{{ totalSeatPrice }} &euro;</span>
+          </h5>
         </div>
       </div>
 
       <button class="btn fontMontserrat fontWhite"
-              @mousemove="onMouseMove"  @mouseleave="onMouseLeave"
+              @mousemove="onMouseMove" @mouseleave="onMouseLeave"
               @mousedown="onMouseDown" ref="btn" @click="onClickChooseSeats">
         <span ref="btnText">Choose seats</span>
       </button>
@@ -426,18 +442,20 @@
   </a>
 </div>
 
-<div id="chooseSeatPage" class="bookingPage" v-show="showChooseSeats">
+<div id="chooseSeatPage" class="bookingPage" v-show="showChooseSeats" ref="frontLayer" class="frontLayer"
+     @click="closeMenu">
   <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
     <h2 class="fontWhite fontMontserrat stepTitle"><b>03.</b> Choose seats</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="bookingContainer" ref="bookingContainer">
     <div class="movieInfoContainer">
       <div class="movieInfo">
         <h2 class="fontWhite fontMontserrat">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h2>
-        <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
+        <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R
+          Limit</h2>
       </div>
       <div class="movieScore fontWhite">
         <button>IMDb</button>
@@ -518,23 +536,25 @@
 
 </div>
 
-<div id="checkoutPage" class="bookingPage" v-show="showCheckout">
+<div id="checkoutPage" class="bookingPage" v-show="showCheckout" ref="frontLayer" class="frontLayer" @click="closeMenu">
   <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
     <h2 class="fontWhite fontMontserrat stepTitle"><b>04.</b> Checkout</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="bookingContainer" ref="bookingContainer">
     <div class="leftPanel">
       <div class="movieInfoContainer">
         <div class="movieInfo">
           <h2 class="fontWhite fontMontserrat">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h2>
-          <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R Limit</h2>
+          <h2 class="fontLightGray fontMontserrat">{{ currentMovieCategory }} | {{ currentMovieRunningTime }} | R
+            Limit</h2>
         </div>
         <div class="movieScore fontWhite">
           <button>IMDb</button>
-          <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+          <span class="idmbScore fontMontserrat fontLightGray"><span
+            class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
         </div>
       </div>
       <div class="beverageChooserContainer">
@@ -615,7 +635,7 @@
 					</label>
       </span>
       <span class="input" :class="{'input--filled': clientPhoneNumber !== ''}">
-					<input class="inputField  " type="text" id="phone_number" v-model="clientPhoneNumber" />
+					<input class="inputField  " type="text" id="phone_number" v-model="clientPhoneNumber"/>
 					<label class="inputLabel" for="phone_number">
 						<span class="inputLabelContent fontPurple fontMontserrat">Phone Number</span>
 					</label>
