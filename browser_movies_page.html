@@ -23,32 +23,32 @@
     <h2 class="fontWhite fontSpartan">Menu</h2>
   </div>
   <div class="nowShowingMovieSlider" ref="nowShowingMovieSlider">
-    <div class="poster1 fullDivImg" :style="{ backgroundImage: currentMovies[0].posterUrlPath }">
+    <div class="poster1 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[0].posterUrlPath }"@mousemove="onMouseMove"  @mouseleave="onMouseLeave" @mousedown="onMouseDown">
     </div>
-    <div class="poster2 fullDivImg" :style="{ backgroundImage: currentMovies[1].posterUrlPath }">
+    <div class="poster2 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[1].posterUrlPath }"@mousemove="onMouseMove"  @mouseleave="onMouseLeave" @mousedown="onMouseDown">
     </div>
-    <div class="poster3 fullDivImg" :style="{ backgroundImage: currentMovies[2].posterUrlPath }">
+    <div class="poster3 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[2].posterUrlPath }"@mousemove="onMouseMove"  @mouseleave="onMouseLeave" @mousedown="onMouseDown">
     </div>
   </div>
   <div class="movieTitle">
-    <h2 class="fontWhite fontSpartan">{{ currentMovieTitleLine1 }}</h2>
-    <h2 class="fontWhite fontSpartan">{{ currentMovieTitleLine2 }}</h2>
+    <h2 class="fontWhite fontSpartan"><span ref="MovieTitleLine1">{{ currentMovieTitleLine1 }}</span></h2>
+    <h2 class="fontWhite fontSpartan"><span ref="MovieTitleLine2">{{ currentMovieTitleLine2 }}</span></h2>
   </div>
   <div class="verticalBarChooseTypeOfMovies">
     <div class="fontWhite fontMontserrat nowShowing" @click="onClickNowShowing" ref="nowShowing">Now showing</div>
     <div class="fontWhite fontMontserrat comingSoon" @click="onClickComingSoon" ref="comingSoon">Coming soon</div>
   </div>
   <div class="movieReleaseDate">
-    <h3 class="fontLightGray fontMontserrat">Premiere</h3>
-    <h2 class="fontWhite fontMontserrat">{{ currentMovieReleaseDate }}</h2>
+    <h3 class="fontLightGray fontMontserrat"><span ref="movieReleaseDate1">Premiere</span></h3>
+    <h2 class="fontWhite fontMontserrat"><span ref="movieReleaseDate2">{{ currentMovieReleaseDate }}</span></h2>
   </div>
   <div class="movieInfo">
     <div class="fontLightGray fontMontserrat movieScore">
-      <button>IMDb</button>
-      <span class="idmbScore"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10<span>
+      <span ref="movieScore"><button>IMDb</button>
+      <span class="idmbScore"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10</span></span>
     </div>
     <div class="fontWhite fontMontserrat movieDetail">
-      {{ currentMovieCategory }} | {{ currentMovieRunningTime }}
+      <span ref="movieDetail">{{ currentMovieCategory }} | {{ currentMovieRunningTime }}</span>
     </div>
   </div>
 </div>

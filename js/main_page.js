@@ -35,8 +35,7 @@ const homePage = new Vue({
     	dx = x - xc;
     	dy = y - yc;
 
-    	TweenMax.to(btn, 0.4, {rotationX:dy/-1, rotationY:dx/10, ease: Sine.easeOut, 
-    		transformPerspective:900, transformOrigin:"center", transformStyle: "preserve-3d"});
+    	TweenMax.to(btn, 0.4, {rotationX:dy/-1, rotationY:dx/10, ease: Sine.easeOut});
 
     },
     onMouseLeave: function(e){
@@ -48,7 +47,7 @@ const homePage = new Vue({
     	const { btn } = this.$refs;
     	const tl = new TimelineMax();
     	tl.to(btn, 0.2, {z:-65, ease: Power4.easeOut})
-    	.to(btn, 0.2, {z:0, ease: Power4.easeOut}, '+=0.1') // temporary alternative to mouseup
+    	.to(btn, 0.2, {z:0, ease: Power4.easeOut}) // temporary alternative to mouseup
     },
     //Mouse up not working
     onMouseUp: function(e){

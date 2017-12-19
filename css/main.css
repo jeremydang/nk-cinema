@@ -31,7 +31,10 @@ body {
   font-size: 1.2em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
   will-change: transform;
-  transition: box-shadow .4s ease-out, background-color .4s ease-out; 
+  transition: box-shadow .4s ease-out, background-color .4s ease-out;
+  transform: perspective(900px);
+  transform-origin: center;
+  transform-style: preserve-3d;
 }
 
 .btn:focus, button:focus, .btn:active, button:active {
@@ -231,10 +234,15 @@ a{
    margin-top: 27vh; 
 }
 
-#browserMoviesPage .poster1, #browserMoviesPage .poster2, #browserMoviesPage .poster3 {
+#browserMoviesPage .moviePoster {
   height: 500px;
   width: 800px;
   margin-bottom: 150px;
+  cursor: pointer;
+  background-color: black;
+  transform: perspective(900px);
+  transform-origin: center;
+  transform-style: preserve-3d;
 }
 
 #browserMoviesPage .backgroundPosterImg {
@@ -257,6 +265,16 @@ a{
   font-size: 4.5em;
   margin-top: 0;
   margin-bottom: 0;
+  overflow: hidden;
+}
+
+#browserMoviesPage .movieTitle h2 span,
+#browserMoviesPage .movieReleaseDate h3 span,
+#browserMoviesPage .movieReleaseDate h2 span,
+#browserMoviesPage .movieInfo .movieDetail span,
+#browserMoviesPage .movieInfo .movieScore span {
+  animation-fill-mode: forwards;
+  position: relative;
 }
 
 #browserMoviesPage .verticalBarChooseTypeOfMovies {
@@ -293,12 +311,14 @@ a{
   font-size: 1.3em;
   margin: 0.1em 0 0.1em 0;
   font-weight: 400;
+  overflow: hidden;
 }
 
 #browserMoviesPage .movieReleaseDate h2 {
   font-size: 1.5em;
   margin: 0.1em 0 0.1em 0;
   font-weight: 400;
+  overflow: hidden;
 }
 
 #browserMoviesPage .movieInfo {
@@ -314,6 +334,11 @@ a{
 
 #browserMoviesPage .movieInfo .movieDetail {
   font-size: 1.4em;
+  overflow: hidden;
+}
+
+#browserMoviesPage .movieInfo .movieScore {
+  overflow: hidden;
 }
 
 .movieScore button {
