@@ -38,7 +38,7 @@ const checkoutPage = new Vue({
     mount: function() {
       this.showCheckout = true;
       const { bookingContainer } = this.$refs;
-      TweenMax.from(bookingContainer, 2, { height: 0, ease: Expo.easeOut });
+      TweenMax.from(bookingContainer, 1.5, { height: 0, ease: Expo.easeOut });
     },
     unmount: function (onComplete) {
       const { bookingContainer } = this.$refs;
