@@ -1,71 +1,24 @@
-#chooseSeatPage {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(41, 41, 41, 0) 50%),
-  linear-gradient(0, rgba(0, 0, 0, 1) 0%, rgba(41, 41, 41, 0) 50%);
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-}
-
-#chooseSeatPage .selectSeatsContainer {
-  background-color: #140029;
-  margin-left: 60px;
-  margin-right: 60px;
+#chooseSeatPage .bookingContainer{
+  display: block;
 }
 
 #chooseSeatPage .seatsContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #140029;
-  margin-left: 60px;
-  margin-right: 60px;
-  padding-top: 40px;
-  padding-bottom: 20px;
+
   position: relative;
   z-index: 1;
 }
 
 #chooseSeatPage .seatIcon {
-  padding: 2px;
+  margin: 0 2px;
   cursor: pointer;
   font-size: 2.5em;
 }
 
-#chooseSeatPage .movieInfoContainer {
-  display: flex;
-}
-
-#chooseSeatPage .movieInfoContainer :first-child {
-  flex: 1;
-  padding-left: 48px;
-  padding-top: 24px;
-}
-
-#chooseSeatPage .movieInfoContainer .movieScore {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 24px;
-  padding-right: 48px;
-}
-
-#chooseSeatPage .movieInfoContainer .movieDetail h2 {
-  padding: 0;
-  margin: 0;
-}
-
-#chooseSeatPage .movieInfoContainer .movieDetail h2:first-child {
-  font-weight: 600;
-}
-
-#chooseSeatPage .movieInfoContainer .movieDetail h2:last-child {
-  font-weight: 200;
-  font-size: 1.2em;
-  margin-top: 5px;
-}
-
 #chooseSeatPage .screenContainer {
-  padding-top: 9em;
+  padding-top: 8.5em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,18 +39,8 @@
   flex-direction: column;
 }
 
-#chooseSeatPage .leftSeats {
-  padding-right: 80px;
-  padding-left: 60px;
-}
-
-#chooseSeatPage .rightSeats {
-  padding-left: 80px;
-  padding-right: 60px;
-}
-
-#chooseSeatPage .middleSeats {
-  padding-right: 14px;
+#chooseSeatPage .leftSeats, #chooseSeatPage .rightSeats {
+  margin: 0 3em;
 }
 
 #chooseSeatPage .leftNumber h2,
@@ -115,8 +58,7 @@
 
 #chooseSeatPage .divider,
 #chooseSeatPage .bookingInfo {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin: 1em 5.6em;
 }
 
 #chooseSeatPage .divider {
@@ -125,14 +67,12 @@
 
 #chooseSeatPage .bookingInfo {
   display: flex;
-  margin-top: 40px;
-  margin-bottom: 40px;
 }
 
 #chooseSeatPage .bookingInfo .seatInfo h2 {
   margin: 0;
   font-weight: 300;
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin-left: 8px;
   margin-right: 32px;
 }
@@ -151,14 +91,14 @@
 #chooseSeatPage .bookingInfo .seatStatus h2 {
   margin: 0;
   font-weight: 300;
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin-left: 8px;
   margin-right: 32px;
 }
 
 #chooseSeatPage .bookingInfo .seatStatus .nextBtn {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   justify-content: center;

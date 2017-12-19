@@ -30,7 +30,7 @@ const chooseSetPage = new Vue({
     seatRows: seatRows,
     seatNumbers: seatNumbers,
     seatProperties: seatProperties,
-    currentBackgroundPoster: "url('/assets/images/wonder_woman_poster.jpg')",
+    currentBackgroundPoster: "url('/assets/images/blade_runner_poster.jpg')",
     selectedSeats: []
   },
   computed: {

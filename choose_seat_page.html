@@ -8,25 +8,34 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/choose_schedule.css">
   <link rel="stylesheet" href="css/choose_seat_page.css">
   <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
 </head>
 
 <body>
-<div id="chooseSeatPage">
+<div id="chooseSeatPage" class="bookingPage">
   <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
     <h2 class="fontWhite fontMontserrat stepTitle"><b>03.</b> Choose seats</h2>
     <h2 class="fontWhite fontSpartan menu">Menu</h2>
   </div>
-  <div class="selectSeatsContainer">
+  <div class="bookingContainer">
     <div class="movieInfoContainer">
-      <div class="movieDetail">
+      <div class="movieInfo">
         <h2 class="fontWhite fontMontserrat">Blade Runner 2049</h2>
         <h2 class="fontLightGray fontMontserrat">Action, Sci-fi | 1h 20min | R Limit</h2>
       </div>
-      <div class="movieScore fontWhite">Hehe</div>
+      <div class="movieScore fontWhite">
+        <button>IMDb</button>
+        <span class="idmbScore fontMontserrat fontLightGray"><span class="fontWhite">8.4/</span> 10<span>
+      </div>
     </div>
     <div class="screenContainer">
       <img src="/assets/images/cinema_screen.png" height="233" width="533" class="screenImg">
@@ -92,7 +101,7 @@
           <span style="color: #C4A8FF" ref="selectedSeats">{{ selectedSeats.join(', ') }}</span>
         </h2>
         <h2 class="fontWhite fontMontserrat">
-          <span class="fontLightGray">Price:</span>
+          <span class="fontLightGray">Total:</span>
           <span style="color: #C4A8FF">42,00 &euro;</span>
         </h2>
         <button class="nextBtn"><i class="material-icons arrowIcon">arrow_forward</i></button>
