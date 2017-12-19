@@ -44,7 +44,7 @@ const chooseAreaPage = new Vue({
         chooseSchedule.mount();
       });
     },
-    onClickBackToMovieDetail: function () {
+    onClickBackToMovieDetail: function() {
       this.unmount(() => {
         this.showChooseArea = false;
         movieDetail.mount();
@@ -52,6 +52,32 @@ const chooseAreaPage = new Vue({
     },
     mount: function() {
       this.showChooseArea = true;
+      const { chooseAreaPage } = this.$refs;
+      TweenMax.fromTo(chooseAreaPage, 1.5, { y: 200, opacity: 0 }, { y: 0, ease: Expo.easeOut, opacity: 1 });
+
+      const currentActiveCinemaInfoRef = this.$refs[
+        this.currentCinemaDescription
+      ];
+      const { mapContainer, footer } = this.$refs;
+
+      TweenMax.fromTo(
+        currentActiveCinemaInfoRef,
+        1,
+        { y: 50, opacity: 0, ease: Power4.easeOut },
+        { y: 0, opacity: 1, ease: Power4.easeOut }
+      );
+      TweenMax.fromTo(
+        mapContainer,
+        1,
+        { y: 50, opacity: 0, ease: Power4.easeOut },
+        { y: 0, opacity: 1, ease: Power4.easeOut }
+      );
+      TweenMax.fromTo(
+        footer,
+        1,
+        { y: 50, opacity: 0, ease: Power4.easeOut },
+        { y: 0, opacity: 1, ease: Power4.easeOut }
+      );
     },
     unmount: function(onComplete) {
       const currentActiveCinemaInfoRef = this.$refs[
