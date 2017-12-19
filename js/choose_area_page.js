@@ -37,13 +37,46 @@ const chooseAreaPage = new Vue({
           { bottom: 0, opacity: 1 }
         );
     },
-    onClickChooseArea: function () {
-      this.showChooseArea = false;
-      chooseSchedule.updateState(this);
-      chooseSchedule.mount();
+    onClickChooseArea: function() {
+      this.unmount(() => {
+        this.showChooseArea = false;
+        chooseSchedule.updateState(this);
+        chooseSchedule.mount();
+      });
+    },
+    onClickBackToMovieDetail: function () {
+      this.unmount(() => {
+        this.showChooseArea = false;
+        movieDetail.mount();
+      });
     },
     mount: function() {
       this.showChooseArea = true;
+    },
+    unmount: function(onComplete) {
+      const currentActiveCinemaInfoRef = this.$refs[
+        this.currentCinemaDescription
+      ];
+      const { mapContainer, footer } = this.$refs;
+
+      TweenMax.fromTo(
+        currentActiveCinemaInfoRef,
+        1,
+        { y: 0, opacity: 1, ease: Power4.easeOut },
+        { y: 50, opacity: 0, ease: Power4.easeOut }
+      );
+      TweenMax.fromTo(
+        mapContainer,
+        1,
+        { y: 0, opacity: 1, ease: Power4.easeOut },
+        { y: 50, opacity: 0, ease: Power4.easeOut }
+      );
+      TweenMax.fromTo(
+        footer,
+        1,
+        { y: 0, opacity: 1, ease: Power4.easeOut },
+        { y: 50, opacity: 0, ease: Power4.easeOut, onComplete: onComplete }
+      );
     },
     updateState: function({
       currentBackgroundPoster,

@@ -61,7 +61,7 @@ const chooseSchedule = new Vue({
     currentMovieUrlPath: nowShowingMovies[0].videoUrlPath,
     currentCinemaDescription: 'Oulu',
     selectedDate: '',
-    selectedTime: '',
+    selectedTime: ''
   },
   mounted: function() {
     this.$refs.seats.appendChild(createSeat(this.seatsId[0]));
@@ -78,6 +78,25 @@ const chooseSchedule = new Vue({
   methods: {
     mount: function() {
       this.showChooseSchedule = true;
+      const { backgroundPosterImg, bookingContainer } = this.$refs;
+      TweenMax.fromTo(
+        backgroundPosterImg,
+        1,
+        { opacity: 0.1 },
+        { opacity: 0.5 }
+      );
+      TweenMax.from(bookingContainer, 2, { height: 0, ease: Expo.easeOut });
+    },
+    unmount: function(onComplete) {
+      const { bookingContainer } = this.$refs;
+      const tl = new TimelineMax();
+      tl
+        .to(bookingContainer, 1, {
+          height: 0,
+          ease: Expo.easeOut
+        })
+        .to(bookingContainer, 0.5, { opacity: 0 }, '-=0.5')
+        .call(onComplete);
     },
     setActiveDate: function(itemIndex) {
       this.activeDate = itemIndex;
@@ -120,11 +139,13 @@ const chooseSchedule = new Vue({
         ease: Sine.easeOut
       });
     },
-    onClickChooseSeats: function () {
-      this.showChooseSchedule = false;
-      chooseSeatPage.updateState({...this, selectedMonth: this.month});
-      chooseSeatPage.setRandomSeats();
-      chooseSeatPage.mount();
+    onClickChooseSeats: function() {
+      this.unmount(() => {
+        this.showChooseSchedule = false;
+        chooseSeatPage.updateState({ ...this, selectedMonth: this.month });
+        chooseSeatPage.setRandomSeats();
+        chooseSeatPage.mount();
+      });
     },
     onMouseDown: function(e) {
       const { btn } = this.$refs;
@@ -170,7 +191,7 @@ const chooseSchedule = new Vue({
       currentMovieRunningTime,
       currentMovieDetailPoster,
       currentMovieUrlPath,
-      currentCinemaDescription,
+      currentCinemaDescription
     }) {
       this.currentBackgroundPoster = currentBackgroundPoster;
       this.currentMovieTitleLine1 = currentMovieTitleLine1;

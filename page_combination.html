@@ -160,7 +160,8 @@
   </div>
 </div>
 
-<div id="chooseAreaPage" v-show="showChooseArea">
+<div id="chooseAreaPage" v-show="showChooseArea" ref="chooseAreaPage">
+  <div class="backgroundPosterImg fullDivImg" :style="{ backgroundImage: currentBackgroundPoster }" ref="backgroundPosterImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
     <h2 class="fontWhite fontMontserrat stepTitle"><b>01.</b> Choose theater</h2>
@@ -318,7 +319,7 @@
       </div>
 
     </div>
-    <div class="mapContainer">
+    <div class="mapContainer" ref="mapContainer">
       <template v-for="cinema in cinemas">
         <div class="mapPin" :class="['mapPin' + cinema]" @click="setActiveCinema(cinema)">
           <div class="mapPinOuter"
@@ -330,8 +331,8 @@
       </template>
     </div>
   </div>
-  <div class="footer">
-    <a class="fontMontserrat fontLightGray backBtn">
+  <div class="footer" ref="footer">
+    <a class="fontMontserrat fontLightGray backBtn" @click="onClickBackToMovieDetail">
       <i class="fa fa-long-arrow-left"></i>
       Back to movie
     </a>
@@ -343,13 +344,13 @@
 </div>
 
 <div id="chooseSchedule" class="bookingPage" v-show="showChooseSchedule">
-  <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}"></div>
+  <div class="backgroundPosterImg fullDivImg" :style="{backgroundImage: currentBackgroundPoster}" ref="backgroundPosterImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>
-    <h2 class="fontWhite fontMontserrat stepTitle"><b>01.</b> Choose session times</h2>
+    <h2 class="fontWhite fontMontserrat stepTitle"><b>02.</b> Choose session times</h2>
     <h2 class="fontWhite fontSpartan menu">Menu</h2>
   </div>
-  <div class="bookingContainer">
+  <div class="bookingContainer" ref="bookingContainer">
     <div class="posterContainer" :style="{backgroundImage: currentMovieDetailPoster}">
       <a class="playBtn">
         <i class="material-icons operation play">play_arrow</i></a>
@@ -429,7 +430,7 @@
     <h2 class="fontWhite fontMontserrat stepTitle"><b>03.</b> Choose seats</h2>
     <h2 class="fontWhite fontSpartan menu">Menu</h2>
   </div>
-  <div class="bookingContainer">
+  <div class="bookingContainer" ref="bookingContainer">
     <div class="movieInfoContainer">
       <div class="movieInfo">
         <h2 class="fontWhite fontMontserrat">{{ currentMovieTitleLine1 + ' ' + (currentMovieTitleLine2 || '') }}</h2>
@@ -521,7 +522,7 @@
     <h2 class="fontWhite fontMontserrat stepTitle"><b>04.</b> Checkout</h2>
     <h2 class="fontWhite fontSpartan menu">Menu</h2>
   </div>
-  <div class="bookingContainer">
+  <div class="bookingContainer" ref="bookingContainer">
     <div class="leftPanel">
       <div class="movieInfoContainer">
         <div class="movieInfo">
