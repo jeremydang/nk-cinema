@@ -41,8 +41,8 @@ const checkoutPage = new Vue({
       TweenMax.fromTo(
         bookingContainer,
         1.5,
-        { height: 0 },
-        { height: 600, ease: Expo.easeOut }
+        { height: 0, opacity: 0 },
+        { height: 600, opacity: 1, ease: Expo.easeOut }
       );
     },
     unmount: function(onComplete) {
