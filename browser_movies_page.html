@@ -30,7 +30,7 @@
     <div class="poster3 fullDivImg moviePoster" :style="{ backgroundImage: currentMovies[2].posterUrlPath }"@mousemove="onMouseMove"  @mouseleave="onMouseLeave" @mousedown="onMouseDown">
     </div>
   </div>
-  <div class="movieTitle">
+  <div class="movieTitle" ref="movieTitle">
     <h2 class="fontWhite fontSpartan"><span ref="MovieTitleLine1">{{ currentMovieTitleLine1 }}</span></h2>
     <h2 class="fontWhite fontSpartan"><span ref="MovieTitleLine2">{{ currentMovieTitleLine2 }}</span></h2>
   </div>
@@ -38,11 +38,11 @@
     <div class="fontWhite fontMontserrat nowShowing" @click="onClickNowShowing" ref="nowShowing">Now showing</div>
     <div class="fontWhite fontMontserrat comingSoon" @click="onClickComingSoon" ref="comingSoon">Coming soon</div>
   </div>
-  <div class="movieReleaseDate">
+  <div class="movieReleaseDate" ref="movieReleaseDate">
     <h3 class="fontLightGray fontMontserrat"><span ref="movieReleaseDate1">Premiere</span></h3>
     <h2 class="fontWhite fontMontserrat"><span ref="movieReleaseDate2">{{ currentMovieReleaseDate }}</span></h2>
   </div>
-  <div class="movieInfo">
+  <div class="movieInfo" ref="movieInfo">
     <div class="fontLightGray fontMontserrat movieScore">
       <span ref="movieScore"><button>IMDb</button>
       <span class="idmbScore"><span class="fontWhite">{{ currentMovieImdbScore }}/</span> 10</span></span>

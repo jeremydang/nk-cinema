@@ -86,7 +86,22 @@ const browserMoviesPage = new Vue({
     dy: 0
   },
   mounted: function(){
-
+    const tl = new TimelineMax();
+    const { nowShowingMovieSlider } = this.$refs;
+    const { movieTitle } = this.$refs;
+    const { movieReleaseDate } = this.$refs;
+    const { movieInfo } = this.$refs;
+    const { nowShowing, comingSoon } = this.$refs;
+    
+    tl.fromTo(nowShowingMovieSlider, 1.5, 
+      {y:100, opacity:0.5, ease: Power4.easeOut},
+      {y:0, opacity:1, ease: Power4.easeOut})
+    .fromTo([movieTitle, movieInfo, movieReleaseDate], 1, 
+      {y:50, opacity:0, ease: Power4.easeOut},
+      {y:0, opacity:1, ease: Power4.easeOut}, '-=0.7')
+    .from(
+      [nowShowing, comingSoon], 0.5, 
+      {y:-10, opacity: 0, ease: Power2.easeOut}, '-=1.6')
   },
   methods: {
     onScrollPage: function() {
