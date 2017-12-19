@@ -189,16 +189,18 @@ const chooseSchedule = new Vue({
       }, 500);
       const lastSeatId = seatsId[seatsId.length - 1];
       const lastSeatElement = document.getElementById(lastSeatId);
-      this.seatsId.pop();
-      TweenMax.fromTo(
-        lastSeatElement,
-        0.2,
-        { opacity: 1 },
-        {
-          opacity: 0,
-          onComplete: () => this.$refs.seats.removeChild(lastSeatElement)
-        }
-      );
+      if (this.seatsId.length > 1) {
+        this.seatsId.pop();
+        TweenMax.fromTo(
+          lastSeatElement,
+          0.2,
+          { opacity: 1 },
+          {
+            opacity: 0,
+            onComplete: () => this.$refs.seats.removeChild(lastSeatElement)
+          }
+        );
+      }
     },
     updateState: function({
       currentBackgroundPoster,
