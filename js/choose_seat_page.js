@@ -170,8 +170,8 @@ const chooseSeatPage = new Vue({
       TweenMax.fromTo(
         this.$refs.selectedSeats,
         0.5,
-        { opacity: 0 },
-        { opacity: 1 }
+        { opacity: 0, bottom: -50 },
+        { opacity: 1, bottom: 0, ease: Expo.easeOut }
       );
     }
   }
