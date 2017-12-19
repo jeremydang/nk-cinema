@@ -288,6 +288,7 @@ a{
   position: relative;
   display: block;
   outline: none;
+  opacity: 0;
 }
 
 .navbar .menuItem .menuItemName{
