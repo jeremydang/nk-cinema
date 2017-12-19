@@ -73,7 +73,7 @@
   </div>
   <div class="movieDetailContainer">
     <div class="posterContainer" ref="posterContainer" :style="{ backgroundImage: currentMovieDetailPoster }">
-      <a class="playBtn">
+      <a class="playBtn" @click="onClickShowMovieTrailer">
         <i class="material-icons operation play">play_arrow</i></a>
     </div>
     <div class="detailContainer" ref="detailContainer">
@@ -135,7 +135,7 @@
   </div>
 </div>
 
-<div id="movieTrailerPage" v-show="showMovieTrailer">
+<div id="movieTrailerPage" v-show="showMovieTrailer" ref="movieTrailerPage">
   <div class="backgroundPosterImg fullDivImg"></div>
   <div class="header">
     <h2 class="fontWhite fontSpartan logo">NK.</h2>

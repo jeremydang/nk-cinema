@@ -15,15 +15,37 @@ const movieTrailer = new Vue({
   methods: {
     mount: function() {
       this.showMovieTrailer = true;
+      const { movieTrailerPage } = this.$refs;
+
+      TweenMax.fromTo(
+        movieTrailerPage,
+        1,
+        { y: 50, opacity: 0, ease: Power4.easeOut },
+        { y: 0, opacity: 1, ease: Power4.easeOut }
+      );
+    },
+    unmount: function(onComplete) {
+      const { movieTrailerPage } = this.$refs;
+
+      TweenMax.fromTo(
+        movieTrailerPage,
+        1,
+        { y: 0, opacity: 1 },
+        { y: 50, opacity: 0, ease: Power4.easeOut, onComplete: onComplete }
+      );
     },
     onClickBackToMovieDetail: function() {
-      this.showMovieTrailer = false;
-      movieDetail.mount();
+      this.unmount(() => {
+        this.showMovieTrailer = false;
+        movieDetail.mount();
+      });
     },
-    onClickBookNow: function () {
-      this.showMovieTrailer = false;
-      chooseAreaPage.updateState(this);
-      chooseAreaPage.mount();
+    onClickBookNow: function() {
+      this.unmount(() => {
+        this.showMovieTrailer = false;
+        chooseAreaPage.updateState(this);
+        chooseAreaPage.mount();
+      });
     },
     updateState: function({
       currentBackgroundPoster,

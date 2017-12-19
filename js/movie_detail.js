@@ -57,6 +57,12 @@ const movieDetail = new Vue({
         browserMoviesPage.mount();
       });
     },
+    onClickShowMovieTrailer: function () {
+      this.unmount(() => {
+        this.showMovieDetail = false;
+        movieTrailer.mount();
+      });
+    },
     onClickBookNow: function () {
       this.unmount(() => {
         this.showMovieDetail = false;
