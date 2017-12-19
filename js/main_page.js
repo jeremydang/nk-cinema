@@ -22,7 +22,7 @@ const homePage = new Vue({
   },
   methods: {
     onClickBookTicket: function () {
-    	location.href='/page_combination.html';
+    	location.href='page_combination.html';
     },
     onMouseMove: function (e) {
     	const { btn } = this.$refs;
