@@ -10,11 +10,37 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
 </head>
 <body>
-<div id="preloader"></div>
-<div id="homePage">
+<div id="preloader">
+  <div class="animateText">
+    <div class="coast">
+      <div class="wave-rel-wrap">
+        <div class="wave"></div>
+      </div>
+    </div>
+    <div class="coast delay">
+      <div class="wave-rel-wrap">
+        <div class="wave delay"></div>
+      </div>
+    </div>
+    <div class="text text-n fontMontserrat fontWhite">n</div>
+    <div class="text text-k fontMontserrat fontWhite">k</div>
+    <div class="text text-i fontMontserrat fontWhite">i</div>
+    <div class="text text-n2 fontMontserrat fontWhite">n</div>
+    <div class="text text-o fontMontserrat fontWhite">o</div>
+  </div>
+</div>
+<nav class="navbar">
+  <ul>
+    <li class="menuItem"><a href="" class="fontMontserrat menuItemName">Home</a></li>
+    <li class="menuItem"><a href="" class="fontMontserrat menuItemName">Booking</a></li>
+    <li class="menuItem"><a href="" class="fontMontserrat menuItemName">Movies</a></li>
+    <li class="menuItem"><a href="" class="fontMontserrat menuItemName">Theaters</a></li>
+  </ul>
+</nav>
+<div id="homePage" class="frontLayer" ref="frontLayer" @click="closeMenu">
   <div class="header">
-    <h2 class="fontWhite fontSpartan logo">NK.</h2>
-    <h2 class="fontWhite fontSpartan menu">Menu</h2>
+    <h2 class="fontWhite fontSpartan logo">NK.</h2> 
+    <h2 class="fontWhite fontSpartan menu" ref="menu" @click="onMenuClick">Menu</h2>
   </div>
   <div class="movieTitle">
     <h3 class="fontMontserrat fontLightGray blindText"><span>Now showing</span></h3>
