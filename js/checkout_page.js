@@ -38,17 +38,27 @@ const checkoutPage = new Vue({
     mount: function() {
       this.showCheckout = true;
       const { bookingContainer } = this.$refs;
-      TweenMax.from(bookingContainer, 1.5, { height: 0, ease: Expo.easeOut });
+      TweenMax.fromTo(
+        bookingContainer,
+        1.5,
+        { height: 0 },
+        { height: 600, ease: Expo.easeOut }
+      );
     },
-    unmount: function (onComplete) {
+    unmount: function(onComplete) {
       const { bookingContainer } = this.$refs;
       const tl = new TimelineMax();
+
       tl
-        .to(bookingContainer, 1, {
-          height: 0,
-          ease: Expo.easeOut
-        })
-        .to(bookingContainer, 0.5, { opacity: 0 }, '-=0.5')
+        .fromTo(
+          bookingContainer,
+          1,
+          {
+            height: 600
+          },
+          { height: 0, ease: Expo.easeOut }
+        )
+        .fromTo(bookingContainer, 0.5, { opacity: 1 }, { opacity: 0 }, '-=0.5')
         .call(onComplete);
     },
     onClickPopcorn: function() {

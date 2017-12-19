@@ -85,17 +85,26 @@ const chooseSchedule = new Vue({
         { opacity: 0.1 },
         { opacity: 0.5 }
       );
-      TweenMax.from(bookingContainer, 2, { height: 0, ease: Expo.easeOut });
+      TweenMax.fromTo(
+        bookingContainer,
+        2,
+        { height: 0 },
+        { height: 600, ease: Expo.easeOut }
+      );
     },
     unmount: function(onComplete) {
       const { bookingContainer } = this.$refs;
       const tl = new TimelineMax();
       tl
-        .to(bookingContainer, 1, {
-          height: 0,
-          ease: Expo.easeOut
-        })
-        .to(bookingContainer, 0.5, { opacity: 0 }, '-=0.5')
+        .fromTo(
+          bookingContainer,
+          1,
+          {
+            height: 600
+          },
+          { height: 0, ease: Expo.easeOut }
+        )
+        .fromTo(bookingContainer, 0.5, { opacity: 1 }, { opacity: 0 }, '-=0.5')
         .call(onComplete);
     },
     setActiveDate: function(itemIndex) {
