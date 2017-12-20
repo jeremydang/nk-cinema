@@ -28,7 +28,7 @@
   <div class="bookingContainer">
     <div class="leftPanel">
       <div class="movieInfoContainer">
-        <div class="movieDetail">
+        <div class="movieInfo">
           <h2 class="fontWhite fontMontserrat">Blade Runner 2049</h2>
           <h2 class="fontLightGray fontMontserrat">Action, Sci-fi | 1h 20min | R Limit</h2>
         </div>
@@ -41,16 +41,24 @@
         <h2 class="fontMontserrat fontWhite">Enjoy your movies with some snacks</h2>
         <div class="chooseFoodContainer">
           <div class="popCornContainer" ref="popCorn" @click="onClickPopcorn">
-            <img src="assets/images/popcorn-icon.png" alt="Popcorn" height="100" width="100">
+            <img src="assets/images/popcorn-icon.png" 
+            alt="Popcorn" height="100" width="100" ref="popCornImg">
             <h2 class="fontWhite fontMontserrat">6,50 &euro;</h2>
           </div>
           <div class="colaContainer" ref="cola" @click="onClickCola">
-            <img src="assets/images/drink-icon.png" alt="Cola" height="100" width="100">
+            <img src="assets/images/drink-icon.png" 
+            alt="Cola" height="100" width="100" ref="colaImg">
             <h2 class="fontWhite fontMontserrat">4,50 &euro;</h2>
           </div>
           <div class="buttonsContainer">
-            <button class="btnPlus" @click="onClickAdd"><i class="fa fa-plus fontWhite"></i></button>
-            <button class="btnMinus" @click="onClickReduce"><i class="fa fa-minus fontWhite"></i></button>
+            <div class="btnPlus effectBtn" :class="{'effectBtn-click': plusBtnClick}" 
+            @click="onClickAdd">
+              <i class="fa fa-plus fontWhite effectBtnIcon"></i>
+            </div>
+            <div class="btnMinus effectBtn" :class="{'effectBtn-click': minusBtnClick}"
+              @click="onClickReduce">
+              <i class="fa fa-minus fontWhite effectBtnIcon"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -86,28 +94,30 @@
           <h2>{{ totalPrice.toFixed(2) }} &euro;</h2>
         </div>
         <div class="buttonContainer">
-          <button class="fontMontserrat fontWhite">Confirm and pay</button>
+          <button class="btn fontMontserrat fontWhite">
+            <span ref="btnText">Confirm and pay</span>
+           </button>
         </div>
       </div>
     </div>
     <div class="rightPanel fontMontserrat fontWhite">
       <h2>Enter your contact details</h2>
-      <span class="input input--hoshi">
-					<input class="input__field input__field--hoshi" type="text" id="name"/>
-					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="name">
-						<span class="input__label-content input__label-content--hoshi">Name</span>
+      <span class="input" :class="{'input--filled': clientName !== ''}">
+					<input class="inputField " type="text" id="name" v-model="clientName"/>
+					<label class="inputLabel" for="name">
+						<span class="inputLabelContent fontPurple fontMontserrat">Name</span>
 					</label>
       </span>
-      <span class="input input--hoshi">
-					<input class="input__field input__field--hoshi" type="text" id="email"/>
-					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="email">
-						<span class="input__label-content input__label-content--hoshi">Email</span>
+      <span class="input" :class="{'input--filled': clientEmail !== ''}">
+					<input class="inputField" type="text" id="email" v-model="clientEmail"/>
+					<label class="inputLabel" for="email">
+						<span class="inputLabelContent fontPurple fontMontserrat">Email</span>
 					</label>
       </span>
-      <span class="input input--hoshi">
-					<input class="input__field input__field--hoshi" type="text" id="phone_number"/>
-					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="phone_number">
-						<span class="input__label-content input__label-content--hoshi">Phone Number</span>
+      <span class="input" :class="{'input--filled': clientPhoneNumber !== ''}">
+					<input class="inputField  " type="text" id="phone_number" v-model="clientPhoneNumber" />
+					<label class="inputLabel" for="phone_number">
+						<span class="inputLabelContent fontPurple fontMontserrat">Phone Number</span>
 					</label>
       </span>
       <h2>Add your payment method</h2>

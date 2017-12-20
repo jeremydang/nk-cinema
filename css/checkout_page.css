@@ -17,6 +17,12 @@
   align-items: center;
 }
 
+.beverageChooserContainer h2{
+  font-weight: 500;
+  font-size: 1.3em;
+  margin-top: 0.5em;
+}
+
 .chooseFoodContainer {
   display: flex;
   width: 80%;
@@ -39,6 +45,7 @@
   align-items: center;
   cursor: pointer;
   transform-origin: center;
+  position: relative;
 }
 
 .colaContainer {
@@ -68,14 +75,15 @@
 .chooseFoodContainer .btnMinus {
   width: 28px;
   height: 28px;
-  border-radius: 12px;
+  border-radius: 50%;
   border: none;
   background-color: #531EC6;
-  font-size: 1.1em;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 16px;
+  padding-top: 2px;
+  margin: 0.5em;
   cursor: pointer;
+  display:flex;
+  justify-content: center;
+  align-items: center
 }
 
 .bookingContainer .checkoutDetailContainer {
@@ -85,14 +93,15 @@
 }
 
 .bookingContainer .checkoutDetailContainer h2 {
-  font-weight: 300;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: 0;
   margin: 1px;
+  font-weight: 400;
 }
 
 .bookingContainer .checkoutDetailContainer > div h2:last-child {
   margin-left: auto;
+  margin-top: 5px;
 }
 
 .checkoutDetailContainer > div {
@@ -101,7 +110,8 @@
 }
 
 .checkoutDetailContainer .placeDetail > div h2:first-child {
-  font-size: 1.1em;
+  font-size: 1em;
+  font-weight: 400;
 }
 
 .checkoutDetailContainer .placeDetail div:last-child {
@@ -124,18 +134,13 @@
 }
 
 .checkoutDetailContainer .buttonContainer {
-  margin-top: 16px;
   display: flex;
   justify-content: flex-end;
 }
 
 .checkoutDetailContainer .buttonContainer button {
-  font-size: 1.2em;
-  padding: 8px 40px 8px 40px;
-  background-color: #531EC6;
-  border-radius: 20px;
-  border: none;
-  font-weight: 600;
+  margin: 0.8em 0 0;
+  padding: 0.5em 1.6em;
 }
 
 .checkoutDetailContainer .totalPrices {
@@ -146,31 +151,19 @@
   display: flex;
   flex-direction: column;
   border-left: 1px solid #404040;
-  margin-top: 40px;
-  /*margin-bottom: 16px;*/
+  margin: 40px 0;
   padding-left: 72px;
   padding-right: 72px;
 }
 
 .rightPanel h2 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 400;
+  margin: 2.4em 0 0;
 }
 
-.rightPanel input {
-  margin-top: 8px;
-  margin-bottom: 16px;
-  font-size: 16px;
-  padding-bottom: 8px;
-  background-color: transparent;
-  border: none;
-  /*border-bottom: 1px solid #878787;*/
-  color: #C4A8FF;
-  font-weight: 200;
-}
-
-.rightPanel input::placeholder {
-  color: #C4A8FF;
+.rightPanel h2:first-child {
+    margin-top: 0;
 }
 
 .rightPanel .visaForm {
@@ -181,6 +174,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 16px;
+  margin-top: 1.5em;
 }
 
 .rightPanel .visaLogoContainer {
@@ -208,7 +202,6 @@
 }
 
 .rightPanel .visaNumberContainer input::placeholder {
-  color: white;
   font-weight: 600;
 }
 
@@ -236,6 +229,15 @@
 .visaForm input {
   transition: border-bottom .3s ease-in-out;
   border-bottom: 1px solid transparent;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  padding-bottom: 8px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #7c7c7c; 
+  color: #C4A8FF;
+  font-weight: 200;
 }
 
 .visaForm input:focus {
@@ -276,74 +278,47 @@
   padding: 0;
 }
 
-.input {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  margin: 1em;
-  max-width: 350px;
-  width: calc(100% - 2em);
-  vertical-align: top;
+.rightPanel input::placeholder {
+  color: #C4A8FF;
 }
 
-.input__field {
+.input{
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+  width: calc(100% - 2em);
+  vertical-align: top;
+  overflow: hidden;
+  margin-top: 0.8em;
+}
+
+.inputField {
   position: relative;
   display: block;
-  float: right;
   padding: 0.8em;
   width: 60%;
   border: none;
   border-radius: 0;
-  background: #f0f0f0;
-  color: #aaa;
-  font-weight: bold;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  -webkit-appearance: none; /* for box shadows to show on iOS */
+  margin-top: 1em;
+  padding: 0.8em 0.35em;
+  width: 100%;
+  background: transparent;
+  color: #B5B5B5;
+  font-size: 0.9em;
 }
 
-.input__field:focus {
+.inputField:focus {
   outline: none;
 }
 
-.input__label {
+.inputLabel {
   display: inline-block;
   float: right;
   padding: 0 1em;
   width: 40%;
   color: #6a7989;
-  font-weight: bold;
-  font-size: 70.25%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  font-size: 85%;
   user-select: none;
-}
-
-.input__label-content {
-  position: relative;
-  display: block;
-  padding: 1.6em 0;
-  width: 100%;
-}
-
-/* Hoshi */
-.input--hoshi {
-  overflow: hidden;
-}
-
-.input__field--hoshi {
-  margin-top: 1em;
-  padding: 0.85em 0.15em;
-  width: 100%;
-  background: transparent;
-  color: #595F6E;
-}
-
-.input__label--hoshi {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -354,12 +329,15 @@
   pointer-events: none;
 }
 
-.input__label-content--hoshi {
+.inputLabelContent {
+  position: relative;
+  display: block;
+  width: 100%;
   position: absolute;
 }
 
-.input__label--hoshi::before,
-.input__label--hoshi::after {
+.inputLabel::before,
+.inputLabel::after {
   content: '';
   position: absolute;
   top: 0;
@@ -367,75 +345,37 @@
   left: 0;
   width: 100%;
   height: calc(100% - 10px);
-  border-bottom: 1px solid #B9C1CA;
+  border-bottom: 1px solid #7c7c7c;
 }
 
-.input__label--hoshi::after {
-  margin-top: 2px;
-  border-bottom: 4px solid red;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-  -webkit-transition: -webkit-transform 0.3s;
+.inputLabel::after {
+  transform: translate3d(-120%, 0, 0);       
   transition: transform 0.3s;
+  border-width: 2px;
+  border-color: #491BAB;
 }
 
-.input__label--hoshi-color-1::after {
-  border-color: hsl(200, 100%, 50%);
-}
-
-.input__label--hoshi-color-2::after {
-  border-color: hsl(160, 100%, 50%);
-}
-
-.input__label--hoshi-color-3::after {
-  border-color: hsl(20, 100%, 50%);
-}
-
-.input__field--hoshi:focus + .input__label--hoshi::after,
-.input--filled .input__label--hoshi::after {
-  -webkit-transform: translate3d(0, 0, 0);
+.inputField:focus + .inputLabel::after, .input--filled .inputLabel::after{                 
   transform: translate3d(0, 0, 0);
 }
 
-.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
-.input--filled .input__label-content--hoshi {
-  -webkit-animation: anim-1 0.3s forwards;
-  animation: anim-1 0.3s forwards;
+.inputField:focus + .inputLabel .inputLabelContent, .input--filled .inputLabelContent{
+  animation: input 0.3s forwards;
 }
 
-@-webkit-keyframes anim-1 {
+@keyframes input {
   50% {
     opacity: 0;
-    -webkit-transform: translate3d(1em, 0, 0);
     transform: translate3d(1em, 0, 0);
   }
   51% {
     opacity: 0;
-    -webkit-transform: translate3d(-1em, -40%, 0);
-    transform: translate3d(-1em, -40%, 0);
+    transform: translate3d(-1em, -70%, 0);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(0, -40%, 0);
-    transform: translate3d(0, -40%, 0);
+    transform: translate3d(0, -70%, 0);
   }
 }
 
-@keyframes anim-1 {
-  50% {
-    opacity: 0;
-    -webkit-transform: translate3d(1em, 0, 0);
-    transform: translate3d(1em, 0, 0);
-  }
-  51% {
-    opacity: 0;
-    -webkit-transform: translate3d(-1em, -40%, 0);
-    transform: translate3d(-1em, -40%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, -40%, 0);
-    transform: translate3d(0, -40%, 0);
-  }
-}
 
