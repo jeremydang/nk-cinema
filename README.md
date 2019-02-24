@@ -1,6 +1,8 @@
 # NorthKino Cinema
 NorthKino Cinema website is a project for our Animation course that utilizes the power of Animation and Microinteraction to improve User Experience of ticket booking. We try to implement our animation skill as thoughful as possible to not annoy user but also bring a mordern and interesting look for our website. Technology that we mainly use is Javascript with the help of GSAP Animation Library and also VueJS.
 
+Note: The site is not responsive yet due to the lack of time. Works best on standard 15" screen size.
+
 [Live demo](https://jeremydang.github.io/nk-cinema/ "Live Demo")
 
 ## How to run
